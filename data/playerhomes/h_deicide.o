@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_deicide","name":"心水之家","home_host":({"deicide","linshui",}),"long":"","exits":(["out":"/d/taohuacun/taohua7",]),"short":"心水之家","file_name":"h_deicide","no_magic":1,"no_fight":1,"no_get":1,])
+out "/d/taohuacun/taohua7"

@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["short":"听雨居","long":"█◤☆◥◤☆◥█     星星千百颗...    █☆☆☆☆☆☆█     █◣☆☆☆☆◢█   生命活的精彩灿烂...    ██◣☆☆◢██     ███◣◢███   愿我们快乐  ^_^","id":"h_loewe","no_fight":1,"exits":(["out":"/d/taohuacun/taohua7",]),"no_magic":1,"no_get":1,"home_host":({"loewe","shisy",}),"file_name":"h_loewe","name":"听雨居",])
+out "/d/taohuacun/taohua7"

@@ -1,0 +1,14 @@
+# written by hero 
+#!/bin/bsh
+while true
+do
+        result=`ps -xo comm|grep addr_server|wc -l`
+	if [ $result -lt 1 ]
+        then  ./addr_server 7374 &
+        fi
+	time=`date +%d%k%M`
+//	cp ~/jyqxii/log/debug.log debug.log.$time
+//	cp ~/jyqxii/log/log log.$time
+	./driver config
+	sleep 20
+done

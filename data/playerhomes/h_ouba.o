@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["short":"红唇海滩","no_get":1,"exits":(["out":"/d/taohuacun/taohua7",]),"file_name":"h_ouba","home_host":({"ouba","enne",}),"no_fight":1,"long":"所谓柔情，是阿贝鬓边的胭脂红；    所谓蜜意，是阿郎臂弯的呵护曲。    任月光自蔷薇花的肩胛升起，穿过房间内粉红色的幔账，    把白色的衣裳悄悄地留在床上。","no_magic":1,"id":"h_ouba","bed_long":"这是一张鸳鸯戏水床，说穿了就是一张水床。^_^","name":"红唇海滩",])
+out "/d/taohuacun/taohua7"

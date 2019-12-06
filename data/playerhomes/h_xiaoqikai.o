@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["exits":(["out":"/d/taohuacun/taohua7",]),"short":"小破屋","id":"h_xiaoqikai","long":"哇！好臭，你不禁“稀稀哗哗”的吐了一地，这是什麽样的家？满地垃圾，散发出一股股熏人的气味.....","bed_long":"那算床吗？冲其量只可以说是一块破板","no_magic":1,"no_get":1,"home_host":({"xiaoqikai","hanyue",}),"name":"小破屋","file_name":"h_xiaoqikai","no_fight":1,])
+out "/d/taohuacun/taohua7"

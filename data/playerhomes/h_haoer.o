@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["home_host":({"haoer","hongyue",}),"id":"h_haoer","file_name":"h_haoer","name":"[135 ÎÂÜ°µÄ¼Ò","long":"Ò»ÇĞ¶¼ÉèÖÃºÃÁË£¬Ö»µÈÒ»Ğ©ÊÒÄÚ×°ĞŞ¡£","no_fight":1,"exits":(["out":"/d/taohuacun/taohua7",]),"short":"[135 ÎÂÜ°µÄ¼Ò","no_magic":1,"no_get":1,])
+out "/d/taohuacun/taohua7"

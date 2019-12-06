@@ -1,0 +1,122 @@
+//Robin 2000.5.9
+
+#include <ansi.h>
+inherit ROOM;
+
+void create()
+{
+	set("short","侧房");
+	set("long", @LONG
+这里是何太冲第五位夫人五姑的卧室，房中充满了药味，而五姑却躺在床
+上，看来卧病时间已经不少了。床(bed)下有些新鲜的泥土，与这药气扑鼻而
+又整洁异常的环境不甚相符。房内的窗口(window)似乎面对着后花园的某一
+种花草。
+LONG );
+	set("exits", ([
+		"east" :  __DIR__"houhuayuan",
+	]));
+        set("item_desc", ([
+		"bed" : "一张木制牙床，虽然上面躺着一个人，但似乎还是能移动的。\n",
+		"window" : "看看是不是可以跳出去……\n",
+        ]));
+	set("objects", ([
+		__DIR__"npc/binv" : 2,
+	]));
+	setup();
+}
+void init()
+{
+	add_action("do_move", "move");
+	add_action("do_dig", "dig");
+	add_action("do_use", "use");
+	add_action("do_jump", "jump");
+}
+int do_move(string arg)
+{
+	object me;
+	me = this_player();
+	if (!arg || arg != "bed") return 1;
+	message_vision("$N用力抬起床，移向一边，看到了墙角的一个小洞(hole)。\n");
+	set("item_desc", ([
+		"hole" : "看不清底的小洞，是不是可以挖(dig)出什么来。\n",
+	]));
+	remove_call_out("close");
+	if ( room->query("temp/snake_hole") < 1 )
+	room->set("temp/snake_hole", 1);
+	call_out("close", 20, this_object());
+	return 1;
+}
+void close(object room)
+{
+	message("vision","婢女哼了一声，你别在这里打扰五夫人了，说着把床推了回去。\n", room);
+	room->set("temp/snake_hole", 0);
+}
+int do_dig(string arg)
+{
+	object me;
+	object ob1;
+	object ob2;
+//	me = this_player();
+	if (!arg || arg != "hole") return 1;
+	else if( !present("lingzhilan", me) )
+	{
+		write ("洞里窜出一条蛇，在$N的手指上咬了一口，旋即缩了回去。\n")
+		me->die();
+	}
+	else if (query("snake_count") < 1)
+		return ("$N挖了半天，洞里什么也没有。\n");
+	add("snake_count", -1);
+	else 
+	{
+		write ("洞里一前一后游出两条蛇，嗅着灵脂兰的气息，很驯服地被$N抓了起来。\n")
+		ob1 = new(__DIR__"obj/jinshe");
+		ob2 = new(__DIR__"obj/yinshe");
+		ob1->move(this_player());
+		ob2->move(this_player());
+		return 0;
+	}
+	return 0;
+}
+int do_use(string arg)
+{
+	object me;
+	object npc;
+	me = this_player();
+	if (present("wu gu", room)) 
+		message ("vision", ""五姑好好的，你想害人呀。\n", me);
+	else if (arg = "jin she")
+	{
+		if (!present("jin she", me)) return 1;
+		write ("金色血蛇从$N的衣带中爬出，钻进了床上的被子里。\n");
+		desturct((string) ob->"jin she"	);
+		room -> set ("temp/jinshe", 1);
+		return 0;
+	}
+	else if (arg = "yin she")
+	{
+		if (!present("yin she", me)) return 1;
+		write ("银色血蛇从$N的衣带中爬出，钻进了床上的被子里。\n");
+		desturct((string) ob->"jin she"	);
+		room ->set ("temp/yinshe", 1);
+		return 0;
+	}
+	else
+	{
+		if (present("temp/jinshe" && "temp/yinshe", room))
+		npc = new(__DIR__"npc/wugu");
+		npc->move(environment(me));
+		room ->set ("temp/jinshe", 0);
+		room ->set ("temp/yinshe", 0);
+		return 0;
+	}
+}
+in do_jump(string arg)
+{
+	object me;
+	if (!arg || arg != "window") return 1;
+	me = this_player();
+	message_vision("$N从窗户跳了出去。\n", me);
+	me->move(__DIR__"houhuayuan1");
+	message_vision("$N从五姑房的窗子跳了过来。\n, me);
+	return 1;
+}

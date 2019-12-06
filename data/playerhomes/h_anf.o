@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_anf","name":"巧克力柠檬梦","long":"一切都设置好了，只等一些室内装修。","home_host":({"anf","kezier",}),"short":"巧克力柠檬梦","file_name":"h_anf","exits":(["out":"/d/taohuacun/taohua7",]),"no_get":1,"no_fight":1,"no_magic":1,])
+out "/d/taohuacun/taohua7"

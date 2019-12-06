@@ -1,0 +1,5 @@
+#/clone/user/user.c
+dbase (["MKS":2,"title":"普通百姓","birthday":1055385383,"potential":255,"name":"一页书","str":19,"gender":"男性","eff_jing":125,"channel_snooping":1,"int":21,"eff_qi":100,"food":88,"con":21,"water":88,"dex":19,"dietimes":2,"max_jingli":100,"id":"xiaobo","kar":22,"normal_die":1,"jingli":100,"per":21,"shen":0,"Daemons_Login_Enter_World_jingli":1,"channels":({"chat","rumor","music","jy","es",}),"pighead":0,"shen_type":0,"combat_exp":2946,"registered":1,"max_jing":125,"max_qi":100,"hunmi":0,"qi":100,"age":14,"jing":125,"disable_type":"","actions":,"hunmi_last_time":0,"default_actions":,"mud_age":5259,"Amend_JingLi":0.300002,"last_save_time":1055391112,"Daemons_Login_New_User":1055385383,"killing":1,"race":"人类",])
+skills (["unarmed":2,"dodge":0,])
+learned (["unarmed":0,"dodge":0,])
+autoload ({})

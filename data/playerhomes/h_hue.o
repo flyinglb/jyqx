@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["no_fight":1,"home_host":({"hue","xcy",}),"exits":(["out":"/d/taohuacun/taohua7",]),"long":"这是神刀堂堂主南宫和逍遥天使的居室！墙上挂的是威震天下的倚天剑梳妆台上的铜鉴（mirror)是女主人所用之物。床，窗台上的天山雪莲似乎业已凋零，只不知她的主人何时才会回来！靠床的墙上一幅字画龙飞凤舞的写着：世事变幻谁可料，誓言未必能做到.‘。’","id":"h_hue","file_name":"h_hue","name":"飘緲仙居","no_magic":1,"short":"飘緲仙居","no_get":1,])
+out "/d/taohuacun/taohua7"

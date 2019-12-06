@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["short":"逍遥轩","file_name":"h_whd","no_magic":1,"long":"一切都设置好了，只等一些室内装修。","no_get":1,"no_fight":1,"id":"h_whd","name":"逍遥轩","home_host":({"whd","xiaoqing",}),"exits":(["out":"/d/taohuacun/taohua7",]),])
+out "/d/taohuacun/taohua7"

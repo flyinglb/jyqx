@@ -1,0 +1,6 @@
+#clone/npc/fa-e.c
+dbase (["winner":"yuan","id":"fae","actions":,"max_qi":380,"neili":738,"weapon":0,"max_neili":738,"shen_type":0,"jing":210,"armor":"/clone/misc/cloth","dex":20,"age":33,"str":20,"kar":24,"con":16,"no_clean_up":1,"name":"慧云","qi":380,"max_jing":205,"startroom":"/d/taishan/zhengqi","per":16,"attitude":"heroism","long":"一位神色严峻的中年武人，他就是嫉恶如仇，侠名远播的武林罚恶使者。
+","race":"人类","default_actions":,"jiali":47,"gender":"男性","int":24,"eff_jing":210,"shen":0,"combat_exp":66018,"eff_qi":380,"short":"第三代罚恶使者 慧云(fae shizhe)","pighead":0,"generation":3,])
+skills (["shaolin-shenfa":82,"hand":79,"banruo-zhang":65,"blade":77,"xiuluo-dao":72,"force":87,"literate":84,"cuff":79,"yizhi-chan":66,"buddhism":86,"parry":68,"hunyuan-yiqi":51,"claw":79,"strike":81,"finger":80,"dodge":82,])
+skill_map (["force":"hunyuan-yiqi","strike":"banruo-zhang","parry":"banruo-zhang","dodge":"shaolin-shenfa","finger":"yizhi-chan",])
+skill_prepare (["strike":"banruo-zhang","finger":"yizhi-chan",])

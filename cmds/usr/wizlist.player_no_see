@@ -1,0 +1,107 @@
+// wizlist.c
+//EDIT BY LANG 08/05/1999
+#include <ansi.h>
+inherit F_CLEAN_UP;
+ 
+int main(object me, string arg)
+{
+        string *list;
+        int my_level, i, j, wiz_cnt;
+        int ch;
+        object ob;
+ 	wiz_cnt = 0;
+if( !wizardp(me) ) {
+write("\nÏÖÔÚÎÞ·¨Ê¹ÓÃÕâ¸öÃüÁî¡£\n\n");
+/*
+write(HIW"\nÇ°±²Î×Ê¦Àú¾­Ç§½Ù°ÙÄÑ£¬¾ãÒÑµÃµÀ³ÉÏÉ£¬·ÉÉý¶øÈ¥£¬ÁôÏÂµÄÊÇÒ»Æ¬ÀÖÍÁºÍÁîºóÈËÍòÊÀ¾°ÑöµÄÍþÃû¡£\n\n");
+write(HIW"ÓÐÊ«ÎªÖ¤£º\n\n\n"NOR);
+write(HIY"                Ì¤Ñ©ÎÞºÛ¶À¼ÅÁÈ£¬\n");
+write("                Ç§ÀïÓÆÓÆ°×ÔÆÆ®£¬\n");
+write("                Ð¦ÎÊÐ¡Ò£ºÎ´¦È¥£¬\n");
+write("                ×ÏÒÂÒ£Ö¸»ÆÀÏÑý¡£\n\n\n"NOR);
+write(HIC"                       --  ³Ô´óÃ×ÌâÓÚ¹«Ôª2000Äê10ÔÂ17ÈÕ\n\n"NOR);
+*/
+return 1;
+}
+        list = sort_array(SECURITY_D->query_wizlist(), 1);
+/*
+write("\n[1;33m¡ï ½ðÓ¹ÈºÏÀ´« ¡ï[1;37mÄ¿Ç°µÄÎ×Ê¦Ò»¹²ÓÐ "+sizeof(list)+
+" Î»[0m(Ç°ÃæÓÐ[1;33m*[0mÕß±íÕýÔÚÏßÉÏ)\n\n");
+*/
+        write(HIG"¡ò"+MUD_NAME +""NOR "¡òÎ×Ê¦³ÉÔ±£º\n");
+	write(HIW "¡Ñ¡Ô"HIB"©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤"HIW"¡Ô¡Ñ\n"NOR);
+        my_level=wiz_level(me);
+printf("[1;31m¡¾Ìì    Éñ¡¿£º[0m");
+        for(i=0, j=0; i<sizeof(list); i++)
+        if(SECURITY_D->get_status(list[i])=="(admin)")
+        {     
+        	wiz_cnt++;
+                ch = ' ';
+                if(ob=find_player(list[i]))
+                        if(wizardp(me))
+if(ob->visible(me) || wiz_level(ob) <= my_level || !find_player(list[i])->query_temp("invis"))
+   ch = '*' ;
+                printf("%c%-10s%s", ch, list[i], ((j++)%7==6) ? "\n  " : "");
+        }
+printf("\n[1;33m¡¾´ó Î× Ê¦¡¿£º[0m");
+        for(i=0, j=0; i<sizeof(list); i++)
+        if(SECURITY_D->get_status(list[i])=="(arch)")
+        {
+        	wiz_cnt++;
+                ch = ' ';
+                if(ob=find_player(list[i]))
+                        if(wizardp(me))
+                        if(ob->visible(me) || wiz_level(ob) <= my_level)
+                                ch = '*';
+                printf("%c%-10s%s", ch, list[i], ((j++)%7==6) ? "\n  " : "");
+        }
+printf("\n[1;34m¡¾Î×    Ê¦¡¿£º[0m");
+        for(i=0, j=0; i<sizeof(list); i++)
+        if(SECURITY_D->get_status(list[i])=="(wizard)")
+        {
+        	wiz_cnt++;
+                ch = ' ';
+                if(ob=find_player(list[i]))
+                        if(wizardp(me))
+                        if(ob->visible(me) || wiz_level(ob) <= my_level)
+                                ch = '*';
+                printf("%c%-10s%s", ch, list[i], ((j++)%7==6) ? "\n  " : "");
+        }
+printf("\n[1;35m¡¾ÊµÏ°Î×Ê¦¡¿£º[0m");
+        for(i=0, j=0; i<sizeof(list); i++)
+        if(SECURITY_D->get_status(list[i])=="(apprentice)")
+        {
+        	wiz_cnt++;
+                ch = ' ';
+                if(ob=find_player(list[i]))
+                        if(wizardp(me))
+                        if(ob->visible(me) || wiz_level(ob) <= my_level)
+                                ch = '*';
+                printf("%c%-10s%s", ch, list[i], ((j++)%7==6) ? "\n  " : "");
+        }
+printf("\n[1;36m¡¾²Î¹ÛÎ×Ê¦¡¿£º[0m");
+        for(i=0, j=0; i<sizeof(list); i++)
+        if(SECURITY_D->get_status(list[i])=="(immortal)")
+        {
+        	wiz_cnt++;
+                printf("%c%-10s%s", (find_player(list[i])) ? ch:' ', list[i], ((j++)%7==6
+) ? "\n  " : "");
+	}
+        write(HIW "\n¡Ñ¡Ô"HIB"©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤"HIY"½ðÓ¹ÈºÏÀ´«"HIB"©¤©¤©¤©¤©¤"HIW"¡Ô¡Ñ\n"NOR);
+	
+	printf("Ä¿Ç°¹²ÓÐ£º%sÎ»Î×Ê¦£¨Ç°ÃæÓÐ[1;33m*[0mÕß±íÕýÔÚÏßÉÏ£©¡£",chinese_number(wiz_cnt));
+        write("\n");
+        return 1;
+}
+ 
+int help(object me)
+{
+  write(@HELP
+Ö¸Áî¸ñÊ½£ºwizlist
+Ö¸ÁîËµÃ÷£º
+           ±¾Ö¸ÁîÓÃÀ´²é¿´Ä¿Ç°×Ü¹²ÓÐ¶àÉÙ¸öÎ×Ê¦¡£
+HELP
+    );
+    return 1;
+}
+

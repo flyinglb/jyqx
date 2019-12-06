@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["short":"新天剑阁","exits":(["out":"/d/taohuacun/taohua7",]),"id":"h_lailai","bed_long":"好舒服的一张大床啊","no_fight":1,"no_magic":1,"home_host":({"lailai","tianyue",}),"file_name":"h_lailai","long":"这里就是剑天门两大高手赖赖（lailai）和柳翠月（tianyue）新婚的房间房间布置的十分豪华，天剑门的势力可见一斑，到处布满了高级的进口电器房间的正中间挂着一张照片，上面是男女主人的和影只见那男的是英俊潇洒，貌似潘安，女的是抚媚无比，貌比天仙，真是天造地设的一对房间里有一张大床，一条很粗的铁链从房顶垂下，窗上凌乱不堪，摆满了各种器械看来，这里是男女主人最常用的地方...","name":"新天剑阁","no_get":1,])
+out "/d/taohuacun/taohua7"

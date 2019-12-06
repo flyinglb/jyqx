@@ -1,0 +1,2 @@
+#/clone/board/qixinglou_b.c
+dbase (["id":"board","no_get":1,"long":"这是七星楼的留言板。","capacity":100,"location":"/d/qixinglou/water7","name":"七星楼留言版","board_id":"qixinglou_b","notes":({(["id":"windbell","time":983237039,"title":"到此一游","author":"静风","msg":"",]),(["id":"suiyu","time":993559778,"author":"碎玉","title":"这也有个，呵呵","msg":"。",]),}),])

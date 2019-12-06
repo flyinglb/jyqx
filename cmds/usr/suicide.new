@@ -1,0 +1,110 @@
+/*å1;36mLast modified by Â½³Ë·ç£¨hyee£© on Sun Nov 19 14:25:59 2000å2;37;0m*/
+/*å1;31mLast updated by ¹ùÀëºŞ£¨silent£© on Mon Nov 20 09:30:53 2000å2;37;0m*/
+// suicide.c
+//Modified by SILENT
+#include <ansi.h>
+inherit F_CLEAN_UP;
+int main(object me, string arg)
+{
+        object link_ob;
+        
+        seteuid(getuid());
+        if( !arg ) {
+                write("Äã¿ÉÒÔ×ÔÉ±¡£\n");
+                return 1;
+        }        
+        if( arg!="-f"&&arg!="-q" ) 
+        return notify_fail("×ÔÉ±ÓĞÁ½ÖÖ£¬ÄúÊÇÒªÓÀÔ¶ËÀµô»¹ÊÇÖØĞÂÍ¶Ì¥£¿\n");
+        if(arg=="-q")
+        {
+                if(!me->query_temp("suicide_countdown"))
+                return notify_fail(HIR"ÄãÃ»ÓĞÑ¡Ôñ×ÔÉ±(suicide -f),ÈçºÎ·ÅÆúÖ®ÄØ?\n"NOR);
+                me->delete_temp("suicide_countdown");
+                me->delete_temp("suicide_time");
+                tell_room(environment(me),HIG+me->name()+"Í»È»´Ó³ÁË¼ÖĞÇåĞÑ¹ıÀ´£¬¸ºÊÖÔ¶Ì÷£¬È´¼ûÃ÷ÔÂÇå·ç£¬"
+                "Í¤Í¤Èç»­£¬²»½û×Ô·ÅÉù³¤Ğ¦¡£\n"NOR,me,environment(me),({me}));
+                return notify_fail("Äã·ÅÆúÁË×ÔÉ±£¡\n");
+        }
+        if( me->is_busy() )
+        return notify_fail("ÄãÉÏÒ»¸ö¶¯×÷»¹Ã»Íê³É¡£\n");        
+        if(wizardp(me))
+        return notify_fail("Î×Ê¦²»ÄÜ×ÔÉ±£¡\n");
+        write(
+        "Èç¹ûÄúÑ¡ÔñÓÀÔ¶ËÀµôµÄ×ÔÉ±·½Ê½£¬Õâ¸öÈËÎïµÄ×ÊÁÏ¾ÍÓÀÔ¶É¾³ıÁË£¬ÇëÎñ±Ø¿¼ÂÇÇå³ş\n");
+        link_ob = me->query_temp("link_ob");
+        if(!link_ob->query("supassword"))
+        write("ÇëÊäÈëÄúµÄÆÕÍ¨ÓÃ»§ÃÜÂë£º");
+             else 
+        write("ÇëÊäÈëÄúµÄ¸ß¼¶ÓÃ»§ÃÜÂë£º");
+        input_to("check_password",1,me,link_ob);
+        return 1;
+}
+private void check_password(string passwd,object me,object link_ob)
+{
+        string old_pass;        
+        if(!stringp(old_pass=link_ob->query("supassword")))        
+        old_pass = link_ob->query("password");         
+        if( crypt(passwd, old_pass)!=old_pass ) {
+                write("ÃÜÂë´íÎó£¡\n");
+                return;
+        }        
+        tell_object( me,
+        HIR "\n\nÄã¾ö¶¨Òª×ÔÉ±ÁË£¬Èç¹ûÒ»ÖùÏãÊ±¼äÄÚ²»ºó»Ú£¬¾ÍÕæµÄÓÀ±ğÁË¡£\n\n\n" NOR);
+        tell_room(environment(me),HIY"\n"+me->query("name")
+        +HIY"ÇáÇáÌ¾ÁËÒ»Éù£¬³Õ³ÕµØÍû×ÅÔ¶·½£¬ÏİÈë³ÁË¼Ö®ÖĞ......\n"NOR,({me}));
+        me->set_temp("suicide_countdown", 80);
+        me->set_temp("suicide_time",0);
+               me->start_busy( (: call_other, __FILE__, "slow_suicide", me :));        
+}
+int slow_suicide(object me)
+{
+        object link_ob;
+        int stage;
+        string v;
+        string *k=({"Ò»","ËÄ·ÖÖ®Èı","°ë","ËÄ·ÖÖ®Ò»"});
+        stage = me->query_temp("suicide_countdown");
+        me->add_temp("suicide_countdown", -1);
+        v=me->query("name")+"£¨"+geteuid(me)+"£©";
+        if( stage > 1 ) {
+                if( stage%20 == 0 )
+                {
+                        tell_object(me, HIR "Äã»¹ÓĞ" + k[me->query_temp("suicide_time")]+ "ÖùÏãµÄÊ±¼ä¿ÉÒÔºó»Ú(SUICIDE -Q)¡£\n" NOR);
+                        me->add_temp("suicide_time",1);
+                }        
+                return 1;
+        } 
+        link_ob = me->query_temp("link_ob");
+        if( !link_ob ) return 0;
+        log_file("static/SUICIDE",
+        sprintf("%s commits a suicide on %s\n", geteuid(me), ctime(time())) );
+        seteuid(getuid());
+        rm( link_ob->query_save_file() + __SAVE_EXTENSION__ );
+        rm( me->query_save_file() + __SAVE_EXTENSION__ );
+        rm( link_ob->query_save_file() + ".oo.o" );
+        rm( me->query_save_file() + ".oo.o" );
+        write(HIY"ºÃ°Õ£¬ÕâÊÇÄãµÄÑ¡Ôñ£¬ÇàÉ½ÒÀ¾É£¬ÂÌË®³¤Á÷£¬±ğÁË......\n"NOR);
+        tell_room(environment(me), HIW"\nÒ»Õó·ç´µÀ´£¬ÒşÒşÖ»¼û"+me->name() 
+        +HIW"¶ÔÄã»Ó»ÓÊÖ£¬È»ºóÎíÒ»°ãµ­»¯ÁË......\n"
+        MAG"ÄãÏë¾ğÈ¡Ê²Ã´£¬È´ÖÕì¶Ê²Ã´Ò²Ã»×¥µ½......\n"NOR, ({me}));
+        destruct(me);
+        message("channel:chat",MAG"¡¾½­ºş´«ÎÅ¡¿"HIR+v+HIR+"÷öÈ»µØÀë¿ªÁËÕâ¸öÊÀ½ç¡£\n"NOR,users());                
+        return 0;
+}
+int help (object me)
+{
+        write(@HELP
+Ö¸Áî¸ñÊ½: suicide [-f]
+ 
+Èç¹ûÒòÎªÄ³ÖÖÔ­ÒòÄã²»Ïë»îÁË, Äã¿ÉÒÔÑ¡Ôñ×ÔÉ±.
+×ÔÉ±·ÖÁ½ÖÖ:
+ 
+suicide    : ÖØĞÂÍ¶Ì¥
+suicide -f : ÓÀÔ¶µÄ³ıÈ¥Íæ¼Ò×ÊÁÏ, ÏµÍ³»áÒªÇóÄã
+             ÊäÈëÃÜÂëÒÔÈ·ÈÏÉí·İ.
+ 
+ÇëÉ÷ÖØÑ¡Ôñ :)
+ 
+HELP
+);
+        return 1;
+}

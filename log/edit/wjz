@@ -1,0 +1,6 @@
+mv /cmds/usr/wizlist.c /cmds/usr/wizlist.player_no_see Wed Mar  6 23:00:39 2002
+mv /cmds/usr/wizlist.old /cmds/usr/wizlist.c Wed Mar  6 23:00:59 2002
+edit /u/wjz/workroom.c Wed Mar  6 23:30:00 2002
+edit /cmds/adm/setpass.c Wed Mar  6 23:45:19 2002
+edit /adm/etc/wizlist Thu Mar  7 00:31:03 2002
+edit /log/static/ATTEMP_KILL Thu Mar  7 23:20:32 2002

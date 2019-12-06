@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["short":"子雨轩","no_get":1,"no_fight":1,"id":"h_sno","exits":(["out":"/d/taohuacun/taohua7",]),"home_host":({"sno","hjkasd",}),"no_magic":1,"long":" 进了门便是雨子轩。世外的感受，让你陶醉这山野的风、山间的春泥味、山村的直朴、屋里的桃花、让你不会再去想尘世的名利、江湖的血腥、人心的险恶。你尽可忘了一切，来凝望雨子轩碧蓝的瓦、彤红的墙。","file_name":"h_sno","name":"子雨轩",])
+out "/d/taohuacun/taohua7"

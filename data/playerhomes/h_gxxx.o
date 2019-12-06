@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["file_name":"h_gxxx","no_fight":1,"no_get":1,"long":"一切都设置好了，只等一些室内装修。","short":"标准新房","id":"room","exits":(["out":"/d/taohuacun/taohua7",]),"home_host":({"gxxx","mygirl",}),"name":"新房",])
+out "/d/taohuacun/taohua7"

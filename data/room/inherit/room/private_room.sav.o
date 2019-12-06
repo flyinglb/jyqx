@@ -1,0 +1,3 @@
+#/inherit/room/private_room.c
+dbase (["no_clean_up":0,])
+autoload ({})

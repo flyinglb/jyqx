@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["short":"听雨轩","no_magic":1,"no_get":1,"id":"h_sony","exits":(["out":"/d/taohuacun/taohua7",]),"home_host":({"sony","belling",}),"no_fight":1,"file_name":"h_sony","long":"一切都设置好了，只等一些室内装修。","name":"听雨轩",])
+out "/d/taohuacun/taohua7"

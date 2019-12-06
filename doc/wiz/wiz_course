@@ -1,0 +1,851 @@
+                           Î×Ê¦±à³Ì
+
+1) ×î¼òµ¥µÄ·¿¼äµÄ×«Ð´
+
+×î¼òµ¥µÄ·¿¼äÊÇÊ²Ã´£¿¾ÍÊÇÀïÃæÊ²Ã´¶¼Ã»ÓÐ£¬»ú¹Ø£¬ÈËÎï(npc)£¬ÎïÆ·£¬Ê²Ã´¶¼Ã»ÓÐ
+±ÈÈçËµ¾ÍÊÇÒ»ÌõÂ·ÉÏµÄÒ»
+³ÌÐò¾ÙÀýÈçÏÂ£º£¨//±íÊ¾×¢ÊÍ£©
+// Room: /d/snow/eroad1.c      //³ÌÐò¿ªÍ·×¢Ò»ÏÂ,ËµÃ÷ÊÇÊ²Ã´ÎÄ¼þ,ÔÚÊ²Ã´µØ·½
+inherit ROOM;                  //¼Ì³Ð ROOM Àà
+void create()           //  ´´½¨º¯Êý;ÔÚÀïÃæ¶¨Òå¸÷ÖÖÊôÐÔ
+
+        set("short", "»ÆÍÁÐ¡¾¶");      // ·¿¼äµÄ ¶ÌÃèÊö
+        set("long", @LONG              // ·¿¼äµÄ³¤ÃèÊö
+ÕâÊÇÒ»ÌõÆÕÍ¨µÄ»ÆÍÁÐ¡¾¶£¬ÍäÍäÇúÇúÍù¶«±±Ò»Â·ÅÌÐýÉÏÉ½£¬±±±ßÓÐ
+Ò»¼ä³ÇÚòÃí£¬ÍùÎ÷ÔòÊÇÑ©Í¤ÕòµÄ½ÖµÀ¡£     //@LONG&LONGÊÇÒ»¶Ôºê,±íÊ¾ÀïÃæÊÇ×Ö·û´®
+ LONG
+        );
+        set("exits", ([ /* sizeof() == 3 */     // Éè·¿¼ä³ö¿Ú
+  "northeast" : "/d/snow/eroad2",               // ²»Í¬µÄ·½ÏòÖ¸Áî,Ìø×ªµ½
+  "north" : "/d/snow/temple",                   // ²»Í¬µÄ·¿¼ä
+  "west" : "/d/snow/sroad1",                    // ×¢Òâ,²»¼Ó .c ºó×º
+]));
+        set("outdoors", "snow");                // ÊÇÑ©´¾ÕòµÄÊÒÍâ
+        setup();                                //²»ÓÃ¹ÜËü,ÕÕ³­¾ÍÊÇ
+        replace_program(ROOM);
+
+2)  ·¿¼äµÄÎïÆ·ºÍÃÅ
+×î¼òµ¥µÄ·¿¼äËµÍêÁË,¾ÍÔÙ¸´ÔÓÒ»µã¶ù¼ÓÉÏ ÎïÆ·¶¨Òå,ºÍÎïÆ·ÄÃèÊ?»¹ÓÐ½¨¸öÃÅ°É
+»¹ÊÇ¾ÙÀýËµÃ÷
+// inn.c
+#include
+inherit ROOM;
+string look_sign(object me);            // º¯ÊýÔ­ÐÍ¶¨Òå
+void create()
+
+        set("short", "Òû·ç¿ÍÕ»");
+        set("long", @LONG
+ÄãÏÖÔÚÕýÕ¾ÔÚÑ©Í¤ÕòÄÏ±ßµÄÒ»¼ÒÐ¡¿ÍÕ»Àï£¬Õâ¼Ò¿ÍÕ»ËäÐ¡£¬È´ÊÇ·½Ô²
+Îå°ÙÀïÄÚ×î¸ºÊ¢ÃûµÄÒ»¼Ò£¬¿ÍÕ»µÄÖ÷ÈË¾ÝËµÊÇÒ»Î»ÔÆÓÎËÄº£µÄÏÉÈË£¬Èç¹û
+ÄãµÄ¸£ÔµÉîºñµÄ»°£¬Ò²Ðí¿ÉÒÔÔÚÕâÀïÓöµ½Ëû¡£³ý´ËÖ®Íâ£¬À´×Ô¸÷µØµÄÂÃÈË
+¶¼Ï²»¶¾Û¼¯ÔÚÕâÀï½»»»ÂÃÍ¾ÉÏµÄ¼ûÎÅ£¬ÄãÒ²¿ÉÒÔÔÚÕâÀï´òÌýµ½Ðí¶àÓÐÈ¤µÄ
+ÏûÏ¢¡£¿¿½üÃÅ¿ÚµÄµØ·½ÓÐÒ»¿éÎÚÄ¾µñ³ÉµÄÕÐÅÆ(sign)¡£
+    Î÷±±±ßÓÐÒ»¸öºìÄ¾ÃÅ(door)£¬ÃÅÉÏ·ºÖøÒ»²ã°×É«µÄ¹âÔÎ£¬Ò»ÖÖÁîÈË¸Ð
+¾õºÜÓÐÁ¦Á¿£¬ÓÖºÜÈáºÍµÄ¹âÃ¢¡£
+LONG
+        );
+        // This enables players to save this room as their startroom.
+        set("valid_startroom", 1);        //Ê¹¸Ã·¿¼ä¿ÉÒÔ³ÉÎªÏÂÒ»´Î½øÀ´µÄµØ·½
+        set("item_desc", ([
+                "sign": (: look_sign :),        // ÎïÆ·(ÆäÊµ²»ÊÇÎïÆ·)ÃèÊö
+// Ö»ÊÇÒ»¸ö¼ÇºÅ¶øÒÑ,Íæ¼Ò¿ÉÒÔÓÃ look sign À´¿´ÄãµÄÃèÊö , ²»ÊÇÊµ¼Ê´æÔÚµÄÎïÆ·
+//   Ã°ºÅ×ó±ßµÄÊÇÃû³Æ,ÓÒ±ßµÄÊÇÃèÊö Èç :
+//  "pillar" : "Ê¯ÖùÉÏ¿ÌÖø£º½£ÆøÖ¸Ìì¡¢½£ÐÄÄÚÁ²¡¢½£Ã¢²»ÏÔ¡¢½£ÉñÈçµç¡£"
+// Íæ¼Ò look pillar ÊÇ,¾Í»á³öÀ´ ºóÃæ¸úµÄ»°
+// Èç¹ûÄãÏë½ÐÍæ¼Òlook Ê±,È¥µ÷Ò»¸öº¯Êý,¾ÍºóÃæ¸úÒ»¸ö (: º¯ÊýÃû :)
+                "door": (: look_door, "northwest" :),
+                // ÕâÀïµ÷µÄ¾ÍÊÇlook_doorº¯Êý,²ÎÊýÊÇnorthwest
+        ]) );
+        set("exits", ([
+                "east"          : "/d/snow/square",
+                "up"            : "/d/snow/inn_2f",
+                "northwest"     : "/d/wiz/entrance" ]) );
+        // ÏÂÃæÊÇ¶¨Òå·¿¼äÀïµÄNPC, Õâ¾ÍÊÇÒ»¸öµêÐ¡¶þÀ²
+        set("objects", ([
+                "/d/snow/npc/waiter" : 1 ]) );  // ºóÃæµÄ1, ¾ÍÊÇÒ»¸öµÄÒâË¼
+        // ´´½¨·¿¼äµÄÃÅ, Æ½Ê±ÊÇ¹Ø±ÕµÄ
+        create_door("northwest", "Ä¾ÃÅ", "southeast", DOOR_CLOSED);
+        setup();
+        // ½¨Ò»¸ö¹«¸æ°å,ÊÇÁíÒ»¸öµØ·½¶¨ÒåµÄº¯Êý
+        // To "load" the board, don't ever "clone" a bulletin board.
+        call_other( "/obj/board/common_b", "???" );
+
+// look signÊ±µ÷ÓÃ,¸ù¾ÝÍæ¼ÒµÄ¼¶±ð·µ»ØÃèÊö
+string look_sign(object me)     // meÊÇÒ»¸ö¶ÔÏó,Ö¸Ïò¶¯×÷µÄÖ÷ÈË
+                                // ÕâÀïµÄmeÊÇ²ÎÊý,Èç¹ûÃ»ÓÐÕâ¸ö²ÎÊý,
+                                // ¿ÉÒÔÔÚº¯ÊýÀïÓÃ
+                                // object me; me = this_player();¶¨
+
+        if( wizardp(me) )       // wizardp(me) ÊÇÒ»¸öefun, ÊÇmudos ¶¨ÒåµÄ
+                                // ÅÐ¶ÏmeÕâ¸ö¶ÔÏóÊÇ·ñÊÇÎ×Ê¦
+                return "ÕÐÅÆÐ´Öø£ºÒû·ç¿ÍÕ»¡£ÅÔ±ßÒ»ÅÅÐ¡×Ö£º×¯Ë¼ÑÆÌâ¡£\n";
+        else
+                return "ÕÐÅÆÐ´Öø£ºÒû·ç¿ÍÕ»¡£\n";
+
+3)  ÈËÎï´´×÷ÈëÃÅ
+Ã¿Ò»¸öÈËÎï¶¼ÐèÒªµ¥¶ÀµÄÒ»¸ö*.cÎÄ¼þ,ÓÉÆäËùÔÚ·¿¼äµÄÔ´Âëµ÷ÓÃ.Ç°ÃæÒÑ¾­Ëµ¹ý
+Ò»°ãÀ´Ëµ,NPC·ÅÔÚnpc¸÷¸öµØ·½µÄnpcÄ¿Â¼ÏÂ,Èç /d/snow/npcÏÂÊÇÑ©´¾ÕòµÄnpc
+¼Ç×¡Ò»µã¾ÍÊÇ:NPCÆäÊµºÍÍæ¼ÒÊÇÒ»ÑùµÄ,Ö»²»¹ýÊÇµçÄÔ¿ØÖÆ¶øÒÑ,
+        Íæ¼ÒÓÐµÄ¸÷ÏîÖµËü¶¼ÓÐ,¶øÇÒ±ÈÈçËµ,fightµÄÊ±ºò,ËüÒ²»áÕÇ¾­ÑéÖµµÄ
+        Ò²»áÂýÂý»Ö¸´. ËùÒÔËü¿ÉÒÔÓÃcommandÀ´Ö´ÐÐÃüÁî.
+¾ÙÀýËµÃ÷:
+::::::::::::::
+fist_trainer.c
+::::::::::::::
+// trainer.c
+inherit NPC;            // ¼Ì³Ð NPCÀà
+void create()
+
+        set_name("Àî»ðÊ¨", ({ "trainer", "lee" }) );    //ÉèNPCÃû×ÖºÍÖÐÎÄÃû×Ö
+                               ^^^^^^^^^|^^^^^
+                                        +-------¾ÍÊÇÓÐÁ½¸öÃû×Ö,ÄÄ¸ö¶¼¿ÉÒÔ
+        set("title", "È­·¨½ÌÁ·");       // Í·
+        set("gender", "ÄÐÐÔ" );         // ÐÔ±ð
+        set("age", 28);                 // ÄêÁä
+        set("str", 26);                 // str, int ¶¼ÊÇÌì¸³Öµ
+        set("int", 14);
+        set("long",                     // ÈËÎïµÄ³¤ÃèÊö,µ±Íæ¼Òlook trainerÊ±
+                                        // ÏÔÊ¾¸ÃÃèÊö
+"Àî»ðÊ¨ÊÇ¸ö¿×ÎäÓÐÁ¦µÄ´ó¿éÍ·£¬ËûÕýÔÚÑµÁ·ËûµÄµÜ×ÓÃÇÏ°Á·¡¸Áø¼ÒÈ­\n"
+                "·¨¡¹(liuh-ken)¡£\n" );
+        set("combat_exp", 3000);        // ÈËÎïµÄÊµÕ½¾­Ñé
+        set("attitude", "heroism");     // ºÃÕ½Ì¬¶È
+        set("force", 120);              // ÄÚÁ¦Öµ
+        set("max_force", 120);          // ×î´óÄÚÁ¦
+        set("force_factor", 1);         // Ò»´Î·¢³ö¶àÉÙµãÄÚÁ¦
+        set("inquiry", ([               // Íæ¼Òask Ê±µÄ·´Ó¦
+                "here": "ÕâÀïµ±È»ÊÇ´¾·çÎä¹Ý£¬²»È»»¹ÊÇÄÄÀï£¿\n",
+// ÈçÉÏ¾ä, Íæ¼Òask trainer about here ¾Í»á³öºóÃæµÄ»°
+                "name": "ÔÚÏÂÐÕÀî£¬Ãû×Ö¾Í½Ð»ðÊ¨£¬ÈË³ÆÀî½ÌÍ·µÄ±ãÊÇÎÒ¡£\n",
+                "Áø¼ÒÈ­·¨": "Å¶....ËµÀ´²ÑÀ¢£¬Ð¡µÜÕâÌ×È­·¨»¹Ã»Ñ§µÃµ½¼Ò,
+Áø¹ÝÖ÷¾Í½ÌÎÒÔÚÕâÀï´«ÒÕ¡£\n"
+        ]) );
+        set_skill("unarmed", 30);       // ÉèÖÃ¸÷ÏîÎä¹¦¼¼ÄÜ
+        set_skill("liuh-ken", 20);
+        set_skill("dodge", 30);
+        map_skill("unarmed", "liuh-ken");       // enable Áø¼ÒÈ­·¨
+        setup();
+
+int recognize_apprentice(object ob)     // ½ÓÊÜÍæ¼Ò°ÝÊ¦Ê±µÄ·´Ó¦
+
+        if( (string)ob->query("family/family_name")=="·âÉ½½£ÅÉ" ) return 1;
+                        ^^^^^^^^^^^^|^^^^^^^^^^^^
+                                    +---------------²éÑ¯Íæ¼ÒµÄÅÉ±ð
+        command("say ¶Ô²»Æð£¬ÕâÎ»" + RANK_D->query_respect(ob) +
+                                     ^^^^^^^^^^^|^^^^^^^^^^^^
+                                                +---¶ÔÏóob, ¾ÍÊÇÍæ¼Ò,µÄÍ·ÏÎ
+"£¬Äú²»ÊÇÎÒÃÇÎä¹ÝµÄµÜ×Ó¡£");
+        return notify_fail( "Àî»ðÊ¨²»Ô¸Òâ½ÌÄãÈ­·¨¡£\n");
+               ^^^^^|^^^^^
+                    +-------ÕâÊÇÒ»¸öºÜÓÐÓÃµÄº¯Êý,¾ÍÊÇ¸ø³ö´íÎóÐÅÏ¢
+
+int accept_fight(object me)     // ½ÓÊÜÍæ¼ÒfightÊ±µ÷ÓÃ
+
+        if( (string)me->query("family/family_name")=="·âÉ½½£ÅÉ" ) {
+                command("say ½øÕÐ°É¡£");
+                return 1;
+        }
+        command("say ¹ÝÖ÷·Ô¸À¹ý£¬²»ÐíºÍÀ´ÕâÀïµÄ¿ÍÈË¹ýÕÐ¡£");
+        return 0;
+
+4) ¼¸¸öÁãÉ¢µÄÎÊÌâ
+*******************************************
+1. NPCÔõÃ´ÓÐ»õÎï£¿
+*******************************************
+        ÈçµêÐ¡¶þ£¬ÔÚcreate()º¯ÊýÀï¶¨Òå
+        set("vendor_goods", ([
+                "Ø°Ê×": "/obj/example/dagger",
+                "¾Æ": "/obj/example/wineskin",
+                "°ü×Ó": "/obj/example/dumpling",
+                "¼¦ÍÈ": "/obj/example/chicken_leg",
+        ]) );
+        Ôö¼ÓÒ»¸ölist¹¦ÄÜ
+        ÔÚinit()Àï¶¨Òå
+void init()             // µ±Ò»¸öÍæ¼Ò½øÈëÍ¬Ò»»·¾³Ê±,µ÷ÓÃ
+
+        object ob;
+        ::init();
+        if( interactive(ob = this_player()) && !is_fighting() ) {
+            ^^^^^^^^^^^^^^|^^^^^^^^^^^^^^^     ^^^^^^|^^^^^^^
+                          +---ÅÐ¶ÏÍæ¼ÒÊÇ·ñ´æÔÚ       +---Ïà»¥ÊÇ·ñ´¦ÓÚÕ½¶·×´Ì¬
+               remove_call_out("greeting");
+                call_out("greeting", 1, ob);
+        }
+        add_action("do_vendor_list", "list");   //Ôö¼ÓÒ»¸ölistµÄ¶¯×÷,
+                       // listÊ±×Ô¶¯µ÷do_vendor_list,ÊÇÏµÍ³º¯Êý
+
+*************************************************
+2. ½øÃÅÊ±,×Ô¶¯ÎÊºÃ
+*************************************************
+init()ÖÐº¯ÊýÉèÖÃÈçÉÏ
+ÁíÍâÐ´Ò»¸ögreetingº¯Êý
+void greeting(object ob)
+
+        if( !ob || environment(ob) != environment() ) return;
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ÅÐ¶ÏÊÇ·ñÊÇÍ¬Ò»¸ö·¿¼ä
+       switch( random(3) ) {  // Ëæ»úÎÊºÃ
+                case  0:
+                        say( "µêÐ¡¶þÐ¦ßäßäµØËµµÀ£ºÕâÎ»" +
+                                RANK_D->query_respect(ob)
+                                + "£¬½øÀ´ºÈ±­²è£¬ÐªÐªÍÈ°É¡£\n");
+                        break;
+                case 1:
+                        say( "µêÐ¡¶þÓÃ²±×ÓÉÏµÄÃ«½íÄ¨ÁËÄ¨ÊÖ£¬ËµµÀ£ºÕâÎ»" +
+                                RANK_D->query_respect(ob)
+                                + "£¬Çë½øÇë½ø¡£\n");
+                        break;
+                case 2:
+                        say( "µêÐ¡¶þËµµÀ£ºÕâÎ»" + RANK_D->query_respect(ob)
+                                +"£¬½øÀ´ºÈ¼¸ÖÑÐ¡µêµÄºì¾Æ°É£¬Õâ¼¸Ìì\
+                                ²Å´Ó½Ñ×ÓÀï¿ª·âµÄÓ´¡£\n");
+                        break;
+        }
+
+********************************************
+3. Æ½Ê±Ëæ»ú¶¯×÷ºÍÕ½¶·ÖÐ¶¯×÷
+********************************************
+ÔÚcreate()º¯ÊýÀï
+        set("chat_chance", 25);         // Ëæ»ú¶¯×÷¸ÅÂÊ 25%
+        set("chat_msg", ({
+                "½©Ê¬»¤·¨ËµµÀ£ºÎÒÃÇÃ©É½ÅÉÊµÁ¦×îÇ¿£¡Ë­¸ÒÆÛ¸ºÎÒÃÇ£¿\n"
+                "½©Ê¬»¤·¨¶ÔÄãËµµÀ£ºÐ¡ÐÄÎÒ°ÑÄã±ä³É½©Ê¬! \n",
+                "½©Ê¬»¤·¨¶ÔÄãÄîÁËÒ»»áÖä£¬Äã²»½ûÃ«¹Çã¤È»ÆðÀ´...\n",
+                (:random_move :)        // Ëæ»úÒÆ¶¯
+        }) );
+        set("chat_chance_combat", 70);  // Õ½¶·ÖÐËæ»ú¶¯×÷¸ÅÂÊ
+        set("chat_msg_combat", ({
+                (: command("Äã¸ÒÈÇÎÒ£¬×·µ½ÌìÑÄº£½ÇÎÒ¶¼ÒªÉ±ÁËÄã£¡") :),
+                (: cast_spell, "drainerbolt" :),
+                (: cast_spell, "netherbolt" :),         //Ê¹ÓÃ¸÷ÖÖ·¨Êõ
+                (: cast_spell, "feeblebolt" :),
+                (: cast_spell, "invocation" :),
+        }) );
+********************************************
+4. ¸ù¾ÝÍæ¼ÒÑ¯ÎÊµÄÐÅÏ¢×÷ÏàÓ¦µÄ¶¯×÷
+********************************************
+ÑîÕÆ¹ñÎªÀý:
+ÔÚcreate()º¯ÊýÀï:
+        set("inquiry", ([
+                "ÖÎÉË": (: heal_me :),
+                "ÁÆÉË": (: heal_me :),
+                "¿ªÒ©": (: heal_me :),
+        ]) );
+ÔÙ¶¨ÒåÒ»¸öheal_meº¯Êý
+string heal_me(object me)
+
+        int ratio;
+        ratio = (int)me->query("eff_kee") * 100 / (int)me->query("max_kee");
+        if( ratio >= 100 )
+                return "ÕâÎ»" + RANK_D->query_respect(me) +
+                "£¬Äú¿´ÆðÀ´ÆøÉ«ºÜºÃ°¡£¬²»ÏñÓÐÊÜÉËµÄÑù×Ó¡£";
+        if( ratio >= 95 )
+                return
+        "Å¶....ÎÒ¿´¿´....Ö»ÊÇÐ©Æ¤ÈâÐ¡ÉË£¬ÄúÂò°ü½ð´´Ò©»ØÈ¥·ó·ó¾ÍÃ»ÊÂÁË¡£";
+
+×÷ÏàÓ¦µÄ¶¯×÷
+*****************************************
+5. ÈËÎïÉíÉÏµÄÎïÆ·ºÍÇ®
+*****************************************
+ÔÚcreate()º¯ÊýÀï
+__DIR__ÊÇÒ»¸öºê,±íÊ¾µ±Ç°Ä¿Â¼,Ìá¸ß³ÌÐò¿ÉÒÆÖ²ÐÔ
+        carry_object(__DIR__"obj/magic_book");  // Ò»°ãµÄÎïÆ·
+        carry_object(__DIR__"obj/spells_book");
+        carry_object(__DIR__"obj/thin_sword")->wield(); // ÎäÆ÷¿ÉÒÔ×°±¸
+        carry_object(__DIR__"obj/pink_cloth")->wear();  // ÒÂ·þµÈ¿ÉÒÔ´©ÉÏ
+        carry_object(__DIR__"obj/shoe")->wear();
+        add_money("gold", 3);           // Ç®ÓÃadd_moneyº¯Êý
+--
+**************************************************************************************
+***********************************************************************************
+                     Î×Ê¦±à³Ì (2)
+
+
+5)  ÈËÎïµÄÊôÐÔ (scratch)
+"id"                                                            (string)
+    ÈËÎïµÄÊ¶±ð×Ö£¬Õâ¸ö×Ö¿ÉÒÔÓÃÀ´Ê¶±ðÍæ¼Ò£¬Í¨³£ "id" ¸ú "name" ¶¼²»Ö±½ÓÓÃ
+    set() Éè¶¨£¬¶øÊÇÓÃ F_NAME ÖÐµÄ set_name()¡£
+"title", "nickname", "name"                                     (string)
+    ÈËÎïµÄ³ÆºÅ¡¢´ÂºÅ¡¢ÓëÖÐÎÄÐÕÃû¡£
+"age"                                                           (int)
+    ÈËÎïµÄÄêÁä£¬Íæ¼ÒµÄÄêÁäÊÇÓÉ¶¨ÒåÔÚ USER_OB ÖÐµÄ update_age() ¶¨ÆÚ¸üÐÂ¡£
+"age_modify"                                                    (int)
+    Õâ¸öÊýÖµ»áÔÚ update_age() ÖÐ±»¼ÓÔÚÈËÎïµÄÄêÁäÉÏ£¬¿ÉÒÔÊÇ¸ºÊý¡£
+"gin", "eff_gin", "max_gin"                                     (int)
+"kee", "eff_kee", "max_kee"
+"sen", "eff_sen", "max_sen"
+    ÈËÎïµÄ¾«ÆøÉñÊýÖµ¼°ÆäÉÏÏÞ£¬ÆäÖÐ "gin", "kee", "sen" ÇëÍ¸¹ý¶¨ÒåÔÚ F_DAMAGE
+
+    ÖÐµÄ receive_damage() Óë receive_heal() Ôö¼õ£¬"eff_gin", "eff_kee",
+    "eff_sen" ÔòÓÃ receive_wound() Óë receive_curing()¡£
+"str", "cor", "int", "spi", "cps", "per", "kar"                 (int)
+    ÈËÎïµÄÌì¸³£¬ÒÀÐò·Ö±ðÎªëöÁ¦(strength)¡¢µ¨Ê¶(courage)¡¢ÎòÐÔ(intelligence)
+    ¡¢ÁéÐÔ(spirituality)¡¢¶¨Á¦(composure)¡¢ÈÝÃ²(personality)¡¢¸£Ôµ(karma)¡£
+    ¸ù¾ÝÌì¸³µÄÔ­Òâ£¬ÇëÎðÐÞ¸ÄÕâ¼¸¸öÖµ£¬Ò²²»ÒªÒÀÀµÕâÐ©Öµ×öÒ»Ð©Ïà¹ØÖØ´óµÄ¼ì²é¡£
+"atman", "max_atman"                                            (int)
+"force", "max_force"
+"mana", "max_mana"
+    ÈËÎïµÄÁéÁ¦(atman, AP)¡¢ÄÚÁ¦(force, FP)¡¢·¨Á¦(mana, MP) ¼°ÆäÉÏÏÞ£¬¿É
+    ÒÔÓÃ set(), add() Ö±½ÓÐÞ¸Ä£¬µ«ÊÇ±ØÐë×ÔÐÐ¼ì²éÉÏÏÂÏÞ¡£
+"MKS", "PKS"                                                    (int)
+    ÈËÎïÉ±ËÀÆäËûÉúÎïµÄÍ³¼Æ(MKS = Monster Killing Statistic, PKS = Player
+    Killing Stastics)¡£
+"combat_exp"                                                    (int)
+    ÈËÎïµÄÊµÕ½¾­Ñé?
+"score"                                                         (int)
+    ÈËÎïµÄ×ÛºÏÆÀ¼Û¡£
+"force_factor"                                                  (int)
+    ÈËÎï enforce Ö¸¶¨µÄÇ¿¶È£¬±íÊ¾ÓÃÄÚÁ¦ÉËÈËËùºÄµÄÄÚÁ¦¡£
+"mana_factor"                                           (int)
+    ÈËÎï enchant Ö¸¶¨µÄÇ¿¶È£¬±íÊ¾Òý³öÎäÆ÷Ä§·¨Ð§¹ûËùºÄµÄ·¨Á¦¡£
+"family"                                                        (mapping)
+    ÈËÎïµÄÊ¦³ÐÃÅÅÉµÈ¼ÇÂ¼£¬µ±ÈËÎï°ÝÊ¦»ò×Ô´´ÃÅÅÉÊ±¾Í»áÉè¶¨Õâ¸öÊôÐÔ£¬ÆäÄÚÈÝ
+    ¼°¶¨ÒåÈçÏÂ£º== (q Àë¿ª£¬b Ç°Ò»Ò³£¬ÆäËû¼ÌÐøÏÂÒ»Ò³)
+        "family_name"£º ÃÅÅÉÃû³Æ
+        "master_name"£º Ê¦¸¸µÄÖÐÎÄÃû×Ö
+        "master_id"£º   Ê¦¸¸µÄÓ¢ÎÄ´ú?
+        "generation"£º  ÈËÎïÔÚÕâ¸öÃÅÅÉÖÐµÄ±²·Ö£¬1 ±íÊ¾¿ªÉ½Ê¼×æ£¬2 ±íÊ¾
+                        µÚ¶þ´úµÜ×Ó....µÈµÈ¡£
+        "title"£º       ÈËÎïÔÚÕâ¸öÃÅÅÉÖÐµÄµØÎ»£¬Èç"ÕÆÃÅÈË"¡¢"×ó»¤·¨"¡¢µÈ
+                        µÈ£¬¸Õ¼ÓÈëÒ»¸öÐÂÃÅÅÉµÄÔ¤ÉèÖµÊÇ"µÜ×Ó"¡£
+        "priv"£º        ÈËÎïÔÚÃÅÅÉÖÐµÄÈ¨ÏÞÆìºÅ£¬Ò»°ãµÜ×ÓÊÇ 0£¬ÕÆÃÅÈËÊÇ -1
+        "enter_time"£º  ÈËÎï¼ÓÈëÃÅÅÉÊ± time() Ëù´«»ØµÄÖµ¡£
+"guilds"                                                        (mapping)
+    ÈËÎïËù²Î¼ÓµÄ¸÷ÖÖ×éÖ¯£¬Ã¿¸ö×éÖ¯ÓÐÒ»¸ö identity µ± key£¬value
+    µÄÄÚÈÝÓÉ¸Ã×éÖ¯µÄÏà¹ØÎï¼þ×ÔÐÐ¶¨Òå¡£
+"startroom"                                                     (string)
+   ÈËÎï login Ê±³öÏÖµÄ·¿¼ä£¬Ò»°ã¶¼ÉèÎª¹«»á¡£
+
+6)  ÈçºÎ½¨ÔìÒ»¸ö·¿¼ä
+    ·¿¼äÊÇ¹¹³ÉÕâÕû¸öÊÀ½çµÄÒªËØÖ®Ò»£¬ÔÚ´ËÎÒÃÇÌá¹©ÁËÒ»¸ö·¿¼äµÄ±ê×¼Îï¼þÀ´ÈÃ
+ËùÓÐµÄ·¿¼ä¼Ì³Ð¡£¶øÈçÍ¬ÆäËûµÄÎï¼þÒ»°ã£¬ÄãÐèÒªÐ´Ò»¸ö create() À´Éè¶¨·¿¼äÖÐ
+µÄÐðÊö¡¢³ö¿Ú¡¢ÎïÆ·¡¢ÉúÎïµÈµÈ¡£ÕâÀï£¬ÎÒÏ²»¶ËµÄãÓÃ create() Õâ¸öº¯Ê½À´¸³Óè
+Õâ¸ö·¿¼äµÄÊôÐÔ¡£Ò»°ãÀ´Ëµ£¬Òª½¨ÔìÒ»¸ö¼òµ¥µÄ·¿¼ä£¬ÄãÖ»Òª¸³ÓèËü»ù±¾µÄÊôÐÔ¼´
+¿É¡£µ±È»£¬ÎÒÃÇ²»ÈÏÎªÒ»¸öÇøÓòÖÐ¼¸Ê®¸ö·¿¼äÃ»ÓÐÈÎºÎµÄ»ú¹Ø»òÃØÃÜ£¬ÊÇ¸ö»áÎüÒý
+Íæ¼ÒÒ»ÓÎµÄºÃµØ·½¡£
+    ÏÂÃæ£¬Ìáµ½ÁËÒ»Ð©½¨Ôì·¿¼äËùÐèÒªÁôÒâµÄÊÂÏî£¬Ò²»áÅäºÏÒ»Ð©Àý×ÓÀ´ËµÃ÷¡£
+  Ò»¡¢»ù±¾Æª
+    Ò»¸ö»ù±¾µÄ·¿¼ä£¬ÒªÓÐ short <¶ÌÐðÊö> ¡¢ long <³¤ÐðÊö>¡¢ exits <³ö¿Ú>
+¡õ  µ±ÄãÔÚÐ´Ò»¸ö·¿¼äµÄ long <³¤ÐðÊö>Ê±£¬Æä¸ñÊ½Îª£º
+        set("long", @LONG
+·¿¼äµÄÐðÊö.......
+LONG
+                "west"          : __DIR__"path3",
+        ºÍ
+                "west"          : "/u/d/davidoff/goathill/path3",
+ÊÇÍêÈ«Ò»ÑùµÄ¡£µ«Ç°ÕßÏÔÈ»ÔÚÒÔááÄ¿Â¼µÄ°áÒÆÉÏ·½±ãµÄ¶à¡£¶øÔÚÏÂÃæ»áÌáµ½Éè¶¨·¿
+¼äÖÐµÄÎïÆ·»òÉúÎïÊ±£¬Ò²½¨Òé²ÉÓÃÕâÖÖ·½Ê½Ð´×÷¡£
+¡õ  item_desc ÕâÊÇÓÃÀ´Éè¶¨¸ö±ð¾°ÎïµÄÃèÊö£¬µ±Íæ¼ÒÓÃ look Õâ¸öÖ¸ÁîÊ±¾Í»á×÷
+    ÓÃ¡£Æä¸ñÊ½Îª£º
+        set("item_desc", ([
+                "¾°ÎïÃû³Æ"      : "¾°ÎïÐðÊö",
+                ...........
+        ]);
+    ÆäÖÐ¾°ÎïÐðÊö¿ÉÒÔÊÇ×Ö´®»òÊÇÒ»¸ö function £¬ËùÒÔÄã¿ÉÒÔÀûÓÃÕâ¸ö¹¦ÄÜ¼ÓÒÔ
+±ä»¯£¬µ±Íæ¼Ò look Ò»¸ö¾°ÎïÊ±£¬¿ÉÄÜ¿´µ½ÐðÊö£¬Ò²¿ÉÄÜ·¢ÉúÒ»Ð©ÌØÊâµÄÊÂ¼þ£¬¶ø
+Äã¾Í¿ÉÒÔÔÚ±»ºô½ÐµÄº¯Ê½ÖÐÐ´ÏÂÕâÐ©ÊÂ¼þ¡£
+¡õ  objects ¿ÉÒÔÈÃÕâ¸ö·¿¼äÔÚÃ¿´Î resetÊ±ÔØÈëÄ³Ð©ÉúÎï»òÄ³Ð©ÎïÆ·£º
+        set("objects", ([
+                "ÎïÆ·»òÉúÎïµÄµµÃû"      : ÊýÁ¿,
+                ...........
+        ]);
+    ÈçÍ¬Ç°ÃæËùÌáµ½µÄ£¬½¨Òé²ÉÓÃ __DIR__À´±àÐ´ÄãµÄÂ·¾¶£¬¶øÊýÁ¿ÔòÒªÓÃÕûÊý¡£
+¡õ  ÒªÎªÕâ¸ö·¿¼äÌíÉÏÃÅ»§Ê±£¬¼ÇµÃÇ°Ãæ±ØÐëÏÈ #include ¡£¶ø¸ñÊ½Îª£º
+        create_door("³ö¿Ú·½Ïò", "ÃÅµÄÃû³Æ", "½øÈë·½Ïò", Ô¤Éè×´Ì¬);
+    ±ÈÈçËµ£¬ÕâÀïÃ÷ÏÔµÄ³ö¿ÚÓÐ west¡¢east ºÍ up¡£ ¶øÄãÒªÈÃÎ÷±ßÓÐÒ»¸ö¹ØÉÏµÄ
+ºìÄ¾ÃÅ£¬Äã¿ÉÒÔÕâÑùÐ´£º
+        create_door("west", "ºìÄ¾ÃÅ", "east", DOOR_CLOSED);
+    µ±Íæ¼Ò½øÈëÕâ¸ö·¿¼äÊ±£¬Ëû»á¿´µ½£º
+        ÕâÀïÃ÷ÏÔµÄ³ö¿ÚÓÐ east ºÍ up¡£
+    ¶øµ±Ëû look west Ê±£¬»á¿´µ½£ºÕâ¸öºìÄ¾ÃÅÊÇ¹ØÉÏµÄ¡£
+    ÆäËûµÄÒ»Ð©ÊôÐÔ£¬Äã¿ÉÒÔ²Î¿¼ /doc/build/room_prop »òÊÇ¶ÁÒ»ÏÂ±ê×¼Îï¼þµÄ
+room.c¡£Ò²½¨ÒéÄã¿ÉÒÔ¶àÓÃ more hereÀ´¹Û¿´Ò»¼äÌØÊâµÄ room¡£
+  ¶þ¡¢½ø½×Æª
+    ÒªÈÃÄãµÄÇøÓòÖÐ¸»ÓÐ±ä»¯£¬Éú¶¯ÓÐÈ¤£¬³ýÁËÎÄ×ÖÐðÊöµÄ·á¸»¶ÈÒÔÍâ£¬Äã¸ü¿ÉÒÔ
+ÀûÓÃ init() Õâ¸öº¯Ê½ÎªÄãµÄ·¿¼äÔö¼ÓÒ»Ð©¡¸»ú¹Ø¡¹»ò¡¸ÃØÃÜ¡¹¡£
+    ÕâÀï£¬ÏÈÈÃÎÒÃÇÁË½âÒ»ÏÂ init() µÄÓÃÍ¾ÎªºÎ£¬ºÍÎªÊ²÷áÒªÓÃµ½Ëü¡£Ã¿Ò»¸ö·¿
+¼äµÄ create() Ö»ÓÐµ± resetÊ±²Å»á±»ºô½Ðµ½£¬¶ø init() ÔòÊÇÔÚ BÎï¼þ½øÈëµ½ A
+Îï¼þÊ±¶¼»áºô½Ðµ½ AÎï¼þµÄ init() ¡£¿´µ½Õâ£¬ÄãÓ¦¸Ã¿ÉÒÔ¿´³ö²î±ðÁË£¬ÎÒÃÇÏ£Íû
+µ±Ò»¸öÎï¼þ£¨´Ë´¦½Ï¶àÊÇÍæ¼Ò£©½øµ½Ò»¸ö·¿¼äÊ±£¬ÄÜ¹»¾­ÓÉÄ³¸ö¶¯×÷Æô¶¯Õâ¸ö·¿¼ä
+µÄ»ú¹ØµÄ»°£¬×ÔÈ»ÊÇÀûÓÃ init() À´±àÐ´¡£
+    Ò»°ãµÄÊ¹ÓÃ·½Ê½£¬ÊÇÔÚ init() ÖÐÀûÓÃ add_action() À´ºô½ÐÄãÐ´µÄº¯Ê½£¬?
+¸ñÊ½Îª£º
+        add_action("function type", "action");
+    function type ¼´ÊÇ±»ºô½ÐµÄº¯Ê½Ãû    action ÊÇÆô¶¯µÄ¶¯×÷
+    ¶øÄã¾Í¿ÉÒÔ½«±» action
+Æô¶¯ááÒª·¢ÉúµÄÊÂ£¬¶¼Ð´ÔÚ±»ºô½ÐµÄº¯Ê½ÀïÃæ¡£ÀíÂÛÉÏÀ´Ëµ£¬ÀûÓÃÕâ¸ö·½Ê½ÎÒÃÇ¿ÉÒÔ×öµ½
+ÈÎºÎÊÂ£¬µ±È»£¬ÄÜ²»ÄÜ´ï³É¾Í¿´Ð´³ÌÊ½µÄ¹¦Á¦
+ÁË¡£ÏÂÃæ¾Ù¸ö¼òµ¥µÄÀý×Ó£º
+void init()
+
+        add_action("do_pick", "pick");
+
+int do_pick(string arg)
+
+        object me;
+        me = this_player();
+        if ( !arg || ( arg != "flower" ) ) return
+notify_fail("ÄãÒªÕªÊ²÷á£¿\n");
+        else if ( random((int)me->query("kar")) < 7 )
+                message_vision("$N½«»¨ÕªÁËÏÂÀ´£¬µ«Ò»²»Ð¡ÐÄ±»´ÌÁËÒ»ÏÂ¡£\n",
+me);
+        else
+                message_vision("$NÕªÏÂÒ»¶äÃÀÀöµÄÑªºìÉ«ÏÊ»¨¡£\n", me);
+        return 1;
+
+    µ±Íæ¼ÒÀûÓÃ pick Õâ¸öÖ¸ÁîÊ±¾Í»áºô½Ðµ½ do_pick() Õâ¸ö function£¬¶øÆô¶¯ÁË
+Õâ¸ö·¿¼äµÄ»ú¹Ø¡£
+    ÕâÀïÌØ±ðÌáµ½Ò»µã£¬Ò»¸ö¼òµ¥µÄ room ÎÒÃÇÎªÁËÊ¹¼ÇÒäÌåµÄÊ¹ÓÃÁ¿½µµ½×îµÍ£¬»á
+ÔÚ create() ×îáá¼ÓÉÏÒ»ÐÐ replace_program(ROOM); ¡£ÕâÊÇÒòÎªÔÚ·¿¼äµÄ±ê×¼Îï¼þ
+ÖÐÓÐ¶¨ÒåÁËÈç init() µÈÆäËûµÄº¯Ê½£¬¶øÒ»¸ö¼òµ¥µÄ·¿¼ä¸ù±¾Ã»ÓÐÓÃµ½£¬ËùÒÔÎÒÃÇÓÃ
+replace_program() À´½«Ô­±¾µÄ±»¼Ì³ÐµÄ±ê×¼Îï¼þ¡¸ÖØÖÃ¡¹£¨»òËµÈ¡´ú£©µô£¬µ«ÊÇÒ»
+µ©·¿¼äÖÐÓÃµ½ÁË init() À´±àÐ´Ê±£¬¾Í¾ø¶Ô²»¿ÉÒÔÓÃ replace_program()£¬ÒòÎªÏµÍ³
+½ìÊ±ÕÒ²»µ½ init() ±ã»áËæ±ãºô½ÐÒ»¸ö¼ÇÒäÌåÖÐµÄÎ»Ö·¶øËæ±ã´«½øÒ»Ð©ÂÒÆß°ËÔãµÄ¶«
+Î÷£¬Çé¿öÑÏÖØÊ±£¬ÉõÖÁ¿ÉÒÔÈÃÕû¸ö mud crash¡£µ«ÊÇ£¬ÎÒÃÇ×Ô²»¿ÉÒòÒ­·ÏÊ³£¬¸ÃÓÃµÄ
+Ê±ºò»¹ÊÇÒªÓÃ£¬ÕâÐ©Ó¦¸ÃÊÇÒ»¸öºÃµÄ³ÌÊ½Ð´×÷ÈËÔ±×Ô¼º±ØÐëÁôÒâµÄ£¬·¢Éú×´¿öÒª×Ô¼º
+¸ºÔð¡£
+ 7)  ¶¨ÒåÔÚÈËÎïÎï¼þÖÐµÄ¸½¼Óº¯Êý(apply functions)
+void defeated_enemy(object victim)
+µ±ÕâÃûÈËÎï´ò»èÒ»¸öµÐÈËµÄÊ±ºò»áºô½ÐÕâ¸ö¸½¼Óº¯Êý£¬victim ¼´ÊÇ±»´ò»èµÄµÄ
+µÐÈËÎï¼þ¡£
+ºô½ÐÕß: COMBAT_D
+ÓÐÔ¤Éè¶¨Òå´ËÒ»º¯ÊýµÄÏµÍ³Îï¼þ: none
+void killed_enemy(object victim)
+µ±ÕâÃûÈËÎïÉ±ËÀÒ»¸öµÐÈËµÄÊ±ºò»áºô½ÐÕâ¸ö¸½¼Óº¯Êý£¬victim ÊÇ¼´½«Òª±»É±ËÀ
+µÄµÐÈËÎï¼þ¡£
+ºô½ÐÕß: COMBAT_D
+ÓÐÔ¤Éè¶¨Òå´ËÒ»º¯ÊýµÄÏµÍ³Îï¼þ: none
+int accept_fight(object who)
+µ±ÓÐÆäËûÉúÎï¶ÔÕâ¸öÈËÎïÏÂ fight Ö¸ÁîµÄÊ±ºò£¬»áºô½ÐÕâ¸ö¸½¼Óº¯Êý£¬who ÊÇ
+ÏÂ fight Ö¸ÁîµÄÉúÎï£¬Èç¹ûÊÇ¶Ô player ÏÂ£¬"fight" Ö¸Áî»áÖ±½ÓÏÔÊ¾Ñ¶Ï¢áç
+Çó±»ÌôÕ½Ò»·½µÄÍ¬Òâ£¬Èç¹ûÊÇ¶Ô NPC ÏÂÕâ¸öÖ¸Áî£¬Ôòµ±Õâ¸ö¸½¼Óº¯Êý´«»Ø 1
+Ê±²Å»á½ÓÊÜÌôÕ½£¬·ñÔòÏÔÊ¾Ä³Ä³²»Ïë¸úÄã½ÏÁ¿µÄÑ¶Ï¢¡£
+ºô½ÐÕß: "fight" Ö¸Áî
+ÓÐÔ¤Éè¶¨Òå´ËÒ»º¯ÊýµÄÏµÍ³Îï¼þ: NPC
+int accept_object(object who, object item)
+µ±ÓÐÈËÓÃ give Ö¸Áî¸øÕâ¸ö·ÇÍæ¼ÒÈËÎï¶«Î÷Ê±£¬»áºô½ÐÕâ¸ö¸½¼Óº¯Êý£¬´«»Ø 1
+±íÊ¾Ô¸Òâ½ÓÊÜÕâ¸ö¶«Î÷£¬´«»Ø 0 ±íÊ¾²»½ÓÊÜ¡£
+ºô½ÐÕß: "give" Ö¸Áî
+ÓÐÔ¤Éè¶¨Òå´ËÒ»º¯ÊýµÄÏµÍ³Îï¼þ: none
+void recruit_apprentice(objct apprentice)
+µ±Ò»¸öÈËÎïÊÕÁËÁíÒ»¸öÈËÎï×öµÜ×ÓÊ±»áºô½ÐÕâ¸ö¸½¼Óº¯
+Êý£¬Äã¿ÉÒÔÔÚÕâ¸öº¯ÊýÀï
+ÐÞ¸ÄµÜ×ÓµÄ rank »òÆäËû¶«Î÷¡£
+ºô½ÐÕß: "apprentice" Ö¸Áî
+ÓÐÔ¤Éè¶¨Òå´ËÒ»º¯ÊýµÄÏµÍ³Îï¼þ: none
+8)  ·¿¼äÊôÐÔ
+"short"                                                         (string)
+    ·¿¼äµÄ¶ÌÐðÊö¡£
+"long"                                                          (string)
+    ·¿¼äµÄ³¤ÐðÊö¡£
+"item_desc"                                                     (mapping)
+    ·¿¼äÖÐ¸ö±ð¾°ÎïµÄÐðÊö£¬¸ñÊ½Îª£º([ <¾°ÎïÃû³Æ>:<¾°ÎïÐðÊö>, .... ])¡£
+    ÆäÖÐ<¾°ÎïÐðÊö>¿ÉÒÔÊÇ×Ö´®»ò function type¡£
+"exits"                                                         (mapping)
+    ·¿¼äµÄ³ö¿Ú£¬°üÀ¨ÓÐÃÅµÄ·½Ïò£¬¸ñÊ½Îª£º([  <³ö¿Ú>:<·¿¼äµµÃû>, .... ])¡£
+"objects"                                                       (mapping)
+    ·¿¼äÖÐµÄÎïÆ·¡¢ÉúÎï£¬¸ñÊ½£º([ <ÎïÆ·»òÉúÎïµµÃû>:<ÊýÁ¿>, .... ])¡£
+"outdoors"                                                      (string)
+    ·¿¼äÊÇ·ñÎª¡¸»§Íâ¡¹£¬»§Íâ·¿¼ä¿ÉÒÔ¿´µ½ÌìÉ«±ä»¯ÓëÆøºòÓ°Ïì¡£×Ö´®µÄÒâÒå
+    ±íÊ¾·¿¼äµÄÆøºòÇø£¬Í¨³£ºÍ¸ÃÇøÓòµÄ domain (¼´ /d ÏÂµÄÄ¿Â¼Ãû³Æ) Í¬¡£
+"no_fight"                                                      (int)
+    ·¿¼äÊÇÎª½ûÖ¹×÷Õ½ÇøÓò¡£
+"no_magic"                                                      (int)
+    ·¿¼äÊÇÎª½ûÖ¹Ê©·¨ÇøÓò¡£
+9)  ÎïÆ·ÊôÐÔ
+"name"                                                          (string)
+    ÎïÆ·µÄÖÐÎÄÃû³Æ¡£
+"id"                                                            (string)
+    ÎïÆ·µÄÓ¢ÎÄÃû³Æ¡£
+"long"                                                          (string)
+    ÎïÆ·µÄÏêÏ¸ÃèÊö¡£
+"value"                                                         (int)
+    ÎïÆ·µÄ¼ÛÖµ£¬µ¥Î»ÊÇ¡¸Ç®¡¹(coin)¡£
+"unit"                                                          (string)
+    ÎïÆ·µÄµ¥Î»£¬Èç£º¸ö¡¢°Ñ¡¢Ö¦.....
+"no_get"                                                        (int)
+    ±íÊ¾ÎïÆ·ÊÇ·ñ¿É±»¼ñÆðÀ´¡£
+"no_drop"                                                       (int string)
+    ±íÊ¾ÎïÆ·ÊÇ·ñ¿É±»¶ªÆú£¬Èç¹ûÐÍÌ¬ÊÇ string, Ôòµ±ÓÐÈËÆóÍ¼¶ªÆúÕâ¸öÎïÆ·Ê±
+    »á½«¸Ã×Ö´®ÓÃ notify_fail ´«»ØÈ¥¡£
+¡õ ÎäÆ÷ÊôÐÔ
+"skill_type"                                                    (string)
+    Õâ¸öÎäÆ÷ËùÊôµÄ¼¼ÄÜÖÖÀà£¬Èç "sword"¡¢"blade" µÈ£¬Òª×¢ÒâÔÚ /d/skill
+    ÏÂ±ØÐëÓÐÒ»¸ö¶¨Òå¸ÃÎäÆ÷¼¼ÄÜµÄÎï¼þ£¬·ñÔò×°±¸Õâ¸öÎäÆ÷Õ½¶·Ê±»áÓÐ´íÎó
+    Ñ¶Ï¢¡£
+"rigidity"                                                      (int)
+    ÎäÆ÷µÄÓ²¶È£¬µ±Ê¹ÓÃÎäÆ÷Ïà¶·Ê±£¬Ó²¶È¡¢ÎäÆ÷µÄÖØÁ¿¡¢³ÖÓÃÕßµÄÁ¦Á¿½«»áÓ°
+    ÏìÎäÆ÷ÊÜËðµÄ»úÂÊ¡£
+    ÎäÆ÷ÊÜËð»ú»áËùÓÃµÄÇ¿¶ÈÖµ¼ÆËã¹«Ê½ÈçÏÂ£º
+        ÖØÁ¿/500 + Ó²¶È + Á¦Á¿
+"weapon_prop"                                                   (mapping)
+    ÎäÆ÷¶Ô³ÖÓÃÕßµÄ×´Ì¬Ó°Ïì£¬Í¨³£ÎäÆ÷Ö»Ó°Ïì "damage"£¬ÕâÐ©×´Ì¬Ó°Ïì»áÔÚ
+    ÎäÆ÷±»×°±¸Ê±ÓÃ add_temp() ¼Óµ½³ÖÓÃÕßµÄ apply ÉÏ£¬²¢ì¶Ð¶³ý»ò dest
+    Ê±¼õ»ØÀ´¡£
+"flag"                                                          (int)
+    ÎäÆ÷µÄÒ»Ð©ÐÍÌ¬Æì±ê£¬Ïê¼û  µÄ¶¨Òå¡£
+
+
+
+**************************************************************************************
+***********************************************************************************
+
+                         ±à³ÌÖÐÒª×¢ÒâµÄÐ¡ÎÊÌâ
+
+1.Ò»Ð©ÖØÒªµÄµ¥´Ê¿É±ðÐ´´íà¸£ºÏócreate,environment,gender,......
+
+2.LONG ÃèÊöµÄÒªµã: ÕâÊÇºÜÖØÒªµÄ£¬Ò»µ©³ö´í¾ÍºÜ²ÒÁË.....
+Çë×¢Òâ£ºlong <³¤ÐðÊö>£¬Æä¸ñÊ½Îª£º
+
+        set("long", @LONG
+
+room or npc µÄÐðÊö.......
+
+LONG
+        );
+      
+    ÆäÖÐ @LONG ºÍ LONG  ÊÇ»¥Ïà¶ÔÓ¦µÄ£¬Äã¿ÉÒÔÓÃÈÎºÎ×Ö½ÓÔÚ @  ááÃæ£¬µ«ÊÇÇ°
+ááÁ½¸ö×ÖÒ»¶¨ÒªÒ»Ñù£¬ÕâÑùÏµÍ³²ÅÄÜÅÐ±ð£¬¶ø·¿¼äµÄÐðÊöÐ´ÍêÊ±£¬Ò»¶¨Òª»»ÐÐááÔÙ
+                                                        
+^^^^^^^^^^^^^^^^        
+½ÓµÚ¶þ¸ö LONG £¬ÇÒÍ¬Ò»ÐÐ²»ÄÜÔÙÓÐÆäËûÈÎºÎµÄ×ÖÔª£¬²»È»ÏµÍ³ÎÞ·¨ÅÐ¶¨ÐðÊöÊÇ·ñ
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ÏÂÒ»Ò³)
+¸Ã½áÊøÁË£¬»áÔì³É±àÒëÊ±µÄ´íÎó¡£
+
+3.Ò»Ð©½á¹¹ÒªÓÐÊ¼ÓÐÖÕ£¬Ïóº¯ÊýµÄ{ } À²£¬»¹ÓÐmapping([ ]) £¬array({ }) À²£¬
+ÒªÊÇÍü¼ÇÐ´ºóÃæµÄÄÇ¸ö¾Í.......
+
+4.__DIR__ µÄÓÃ·¨£¬Ò»°ãÀ´Ëµ__DIR__ ÊÇÖ¸¸ÃNPC OR ROOM µÄµ±Ç°Ä¿Â¼¡£ËùÒÔÒªÅª
+Ê²Ã´Îï¼þµÄ»°¾ÍÓÃÕâ¸ö__DIR__µÄÏà¶ÔÄ¿Â¼×öºÃÁË¡£
+
+àÅ£¬¾ÍÏëÆðÕâÃ´¶àÁË£¬ÒÔºóÔÙÐ´±ðµÄ°É¡£
+
+-
+**************************************************************************************
+***********************************************************************************
+
+                         wiz ±à³ÌÔÓÌ¸ (1)
+
+¹ØÓÚnotifal_fail
+
+usage: notofy_fail(string | function str);
+Çë×¢Òâ£ºnotify_fail() always returns 0.
+
+nofify_fail() µÄ×÷ÓÃÊÇÉèÖÃ±¾´ÎÃüÁîµÄÊ§°ÜÐÅÏ¢¡£àÅ£¬ÌýÆðÀ´ºÃÏñºÜ¸´ÔÓ :P
+ÆäÊµ¾ÍÊÇÈ¡´ú¡°Ê²Ã´£¿¡±Õâ¾ä»°µÄ¶«¶«À²¡£±ÈÈçÎÒÃÇ´òÒ»¸öÃüÁî(°üÀ¨¶¯×÷Ê²Ã´µÄ)¡£
+ÒªÊÇ´ËÃüÁîµÄ³ÌÐòreturn 0 µÄ»°£¬ÏµÍ³¾Í»á¸ø¸ö´íÎóÐÅÏ¢ ¡°Ê²Ã´£¿¡±µ«¼ÙÈçÎÒÃÇ
+ÔÚÃüÁîµÄ³ÌÐòÀïÃæÓÐnotify_fail() £¬ÄÇÃ´¼ÙÈçÃüÁî×îºó·µ»Ø 0 ¡£ÄÇÏµÍ³¾Í¸ø³ö
+±¾ÃüÁîÖ´ÐÐµÄ×îºóÒ»¸önotify_fail() ËùÉè¶¨µÄ´íÎóÐÅÏ¢£¬·ñÔò¾ÍÊÇ¡°Ê²Ã´£¿¡±¡£
+
+ÆäÖÐnotify µÄ²ÎÊý¿ÉÒÔÊÇÒ»¸östr µÄfunction ¡£¾ÍÊÇ°ÑÕâ¸öfunc Ëù·µ»ØµÄ
+string ×ö´íÎóÐÅÏ¢ÁË¡£
+
+ÀýÈç£ºhelp ÃüÁîÀïµÄÒ»¶Î£º
+
+        if( stringp(file = me->find_command(arg)) ) {
+                notify_fail("ÓÐÕâ¸öÖ¸Áî´æÔÚ£¬µ«ÊÇ²¢Ã»ÓÐÏêÏ¸µÄËµÃ÷ÎÄ¼þ¡£\n");
+//ÔÚÖ´ÐÐnotify_fail µÄÊ±ºò²¢Ã»ÏÔÊ¾£¬Ö»ÊÇÔÚ×îºó·µ»Ø0 ÖµÊ±²ÅÏÔÊ¾´ËÐÅÏ¢¡£
+                return file->help(me);
+        }
+
+//ÒªÊÇreturn file->help(me) == 0 µÄ»°¡£
+//¾Í»á¸ø³ö´íÎóÐÅÏ¢"ÓÐÕâ¸öÖ¸Áî´æÔÚ£¬µ«ÊÇ²¢Ã»ÓÐÏêÏ¸µÄËµÃ÷ÎÄ¼þ¡£\n"
+//¼ÙÈçÃ»notify_fail Õâ¾ä£¬´íÎóÐÅÏ¢¾ÍÊÇ ¡°Ê²Ã´£¿¡±
+
+
+±ê  Ìâ: roomµÄÖÆ×÷
+
+
+/doc/build/room
+¡õ  ÈçºÎ½¨ÔìÒ»¸ö·¿¼ä
+
+    ·¿¼äÊÇ¹¹³ÉÕâÕû¸öÊÀ½çµÄÒªËØÖ®Ò»£¬ÔÚ´ËÎÒÃÇÌá¹©ÁËÒ»¸ö·¿¼äµÄ±ê×¼Îï¼þÀ´ÈÃ
+ËùÓÐµÄ·¿¼ä¼Ì³Ð¡£¶øÈçÍ¬ÆäËûµÄÎï¼þÒ»°ã£¬ÄãÐèÒªÐ´Ò»¸ö create() À´Éè¶¨·¿¼äÖÐ
+µÄÐðÊö¡¢³ö¿Ú¡¢ÎïÆ·¡¢ÉúÎïµÈµÈ¡£ÕâÀï£¬ÎÒÏ²»¶ËµÄãÓÃ create() Õâ¸öº¯Ê½À´¸³Óè
+Õâ¸ö·¿¼äµÄÊôÐÔ¡£Ò»°ãÀ´Ëµ£¬Òª½¨ÔìÒ»¸ö¼òµ¥µÄ·¿¼ä£¬ÄãÖ»Òª¸³ÓèËü»ù±¾µÄÊôÐÔ¼´
+¿É¡£µ±È»£¬ÎÒÃÇ²»ÈÏÎªÒ»¸öÇøÓòÖÐ¼¸Ê®¸ö·¿¼äÃ»ÓÐÈÎºÎµÄ»ú¹Ø»òÃØÃÜ£¬ÊÇ¸ö»áÎüÒý
+Íæ¼ÒÒ»ÓÎµÄºÃµØ·½¡£
+
+    ÏÂÃæ£¬Ìáµ½ÁËÒ»Ð©½¨Ôì·¿¼äËùÐèÒªÁôÒâµÄÊÂÏî£¬Ò²»áÅäºÏÒ»Ð©Àý×ÓÀ´ËµÃ÷¡£
+
+  Ò»¡¢»ù±¾Æª
+
+    Ò»¸ö»ù±¾µÄ·¿¼ä£¬ÒªÓÐ short <¶ÌÐðÊö> ¡¢ long <³¤ÐðÊö>¡¢ exits <³ö¿Ú>
+
+¡õ  µ±ÄãÔÚÐ´Ò»¸ö·¿¼äµÄ long <³¤ÐðÊö>Ê±£¬Æä¸ñÊ½Îª£º
+
+        set("long", @LONG
+
+·¿¼äµÄÐðÊö.......
+
+LONG´Íê¼ÌÐø 67% == (q Àë¿ª£¬b Ç°Ò»Ò³£¬ÆäËû¼ÌÐøÏÂÒ»Ò³)
+        );
+      
+    ÆäÖÐ @LONG ºÍ LONG  ÊÇ»¥Ïà¶ÔÓ¦µÄ£¬Äã¿ÉÒÔÓÃÈÎºÎ×Ö½ÓÔÚ @  ááÃæ£¬µ«ÊÇÇ°
+ááÁ½¸ö×ÖÒ»¶¨ÒªÒ»Ñù£¬ÕâÑùÏµÍ³²ÅÄÜÅÐ±ð£¬¶ø·¿¼äµÄÐðÊöÐ´ÍêÊ±£¬Ò»¶¨Òª»»ÐÐááÔÙ
+½ÓµÚ¶þ¸ö LONG £¬ÇÒÍ¬Ò»ÐÐ²»ÄÜÔÙÓÐÆäËûÈÎºÎµÄ×ÖÔª£¬²»È»ÏµÍ³ÎÞ·¨ÅÐ¶¨ÐðÊöÊÇ·ñ
+¸Ã½áÊøÁË£¬»áÔì³É±àÒëÊ±µÄ´íÎó¡£
+
+    ¶øÎªÇóÇøÓò¿´ÆðÀ´Íâ¹ÛÉÏÕûÆë¡¢Í³Ò»£¬·¿¼äµÄ³¤ÐðÊöÖÐÃ¿Ò»ÐÐµÄ³¤¶È±ØÐëÒ»Ñù
+£¬¶øÒ»ÐÐµÄ³¤¶È½¨ÒéÎª 29 µ½ 32 ¸öÖÐÎÄ×Ö£¬Ô¼Õ¼Ó©Ä»µÄÈý·ÖÖ®¶þ¡£²¢ÇÒÒ»¸ö·¿¼ä
+µÄÐðÊö×îºÃ²»ÒªµÍì¶ÈýÐÐ£¬ÇøÓò¸÷¸ö·¿¼äµÄÐðÊöÖØ¸´ÐÔ½µµ½Ô½µÍÔ½ºÃ£¬ÕâÑùÄãµÄÇø
+Óò¿´ÆðÀ´²Å²»»áÌ«¹ýÑô´º¡£µ±È»£¬ÓÐÊ±ºòÎªÁËÄ³Ð©Ä¿µÄ£¬±ÈÈçÒ»¸öÃÔ¹¬£¬Äã¿ÉÄÜ»á
+ÏàÁÚµÄ¼¸¸ö·¿¼ä¶¼ÓÃµ½Ò»ÑùµÄÐðÊö£¬ÄÇ×ÔÈ»²»ÔÚ´ËÏÞ¡£
+
+¡õ  Ò»¸ö·¿¼äµÄ³ö¿ÚÔòÒÔÏÂÁÐ¸ñÊ½¸³Óè£º
+
+        set("exits", ([
+                "·½Ïò"          : "Á¬½Óµ½µÄ·¿¼äÖ®µµÃû",
+                ...........
+        ]);
+
+    ÔÚÕâÀï£¬ÎªÁËÒ»¸öÒÔááÇøÓò¿ª·Åáá°áÒÆÄ¿Â¼µÄ±ãÀûÐÔ£¬½¨Òé²ÉÓÃ__DIR__ Õâ¸ö
+
+
+ÓÉÏµÍ³Ìá¹©µÄ¾Þ¼¯À´Ð´Â·¾¶£¬±ÈÈçËµ£º
+
+                "west"          : __DIR__"path3",
+        ºÍ
+                "west"          : "/u/d/davidoff/goathill/path3",
+
+ÊÇÍêÈ«Ò»ÑùµÄ¡£µ«Ç°ÕßÏÔÈ»ÔÚÒÔááÄ¿Â¼µÄ°áÒÆÉÏ·½±ãµÄ¶à¡£¶øÔÚÏÂÃæ»áÌáµ½Éè¶¨·¿
+¼äÖÐµÄÎïÆ·»òÉúÎïÊ±£¬Ò²½¨Òé²ÉÓÃÕâÖÖ·½Ê½Ð´×÷¡£
+
+¡õ  item_desc ÕâÊÇÓÃÀ´Éè¶¨¸ö±ð¾°ÎïµÄÃèÊö£¬µ±Íæ¼ÒÓÃ look Õâ¸öÖ¸ÁîÊ±¾Í»á×÷
+    ÓÃ¡£Æä¸ñÊ½Îª£º
+
+        set("item_desc", ([
+                "¾°ÎïÃû³Æ"      : "¾°ÎïÐðÊö",
+                ...........
+        ]);
+
+    ÆäÖÐ¾°ÎïÐðÊö¿ÉÒÔÊÇ×Ö´®»òÊÇÒ»¸ö function £¬ËùÒÔÄã¿ÉÒÔÀûÓÃÕâ¸ö¹¦ÄÜ¼ÓÒÔ
+±ä»¯£¬µ±Íæ¼Ò look Ò»¸ö¾°ÎïÊ±£¬¿ÉÄÜ¿´µ½ÐðÊö£¬Ò²¿ÉÄÜ·¢ÉúÒ»Ð©ÌØÊâµÄÊÂ¼þ£¬¶ø
+Äã¾Í¿ÉÒÔÔÚ±»ºô½ÐµÄº¯Ê½ÖÐÐ´ÏÂÕâÐ©ÊÂ¼þ¡£
+
+¡õ  objects ¿ÉÒÔÈÃÕâ¸ö·¿¼äÔÚÃ¿´Î resetÊ±ÔØÈëÄ³Ð©ÉúÎï»òÄ³Ð©ÎïÆ·£º
+
+        set("objects", ([
+                "ÎïÆ·»òÉúÎïµÄµµÃû"      : ÊýÁ¿,ÂÒ»Ò³)
+                ...........
+        ]);
+
+    ÈçÍ¬Ç°ÃæËùÌáµ½µÄ£¬½¨Òé²ÉÓÃ __DIR__À´±àÐ´ÄãµÄÂ·¾¶£¬¶øÊýÁ¿ÔòÒªÓÃÕûÊý¡£
+ 
+¡õ  ÒªÎªÕâ¸ö·¿¼äÌíÉÏÃÅ»§Ê±£¬¼ÇµÃÇ°Ãæ±ØÐëÏÈ #include <room.h>¡£¶ø¸ñÊ½Îª£º
+
+        create_door("³ö¿Ú·½Ïò", "ÃÅµÄÃû³Æ", "½øÈë·½Ïò", Ô¤Éè×´Ì¬);
+
+    ±ÈÈçËµ£¬ÕâÀïÃ÷ÏÔµÄ³ö¿ÚÓÐ west¡¢east ºÍ up¡£ ¶øÄãÒªÈÃÎ÷±ßÓÐÒ»¸ö¹ØÉÏµÄ
+ºìÄ¾ÃÅ£¬Äã¿ÉÒÔÕâÑùÐ´£º
+
+        create_door("west", "ºìÄ¾ÃÅ", "east", DOOR_CLOSED);
+
+    µ±Íæ¼Ò½øÈëÕâ¸ö·¿¼äÊ±£¬Ëû»á¿´µ½£º
+
+        ÕâÀïÃ÷ÏÔµÄ³ö¿ÚÓÐ east ºÍ up¡£
+
+    ¶øµ±Ëû look west Ê±£¬»á¿´µ½£ºÕâ¸öºìÄ¾ÃÅÊÇ¹ØÉÏµÄ¡£
+
+ 
+    ÆäËûµÄÒ»Ð©ÊôÐÔ£¬Äã¿ÉÒÔ²Î¿¼ /doc/build/room_prop »òÊÇ¶ÁÒ»ÏÂ±ê×¼Îï¼þµÄ
+room.c¡£Ò²½¨ÒéÄã¿ÉÒÔ¶àÓÃ more hereÀ´¹Û¿´Ò»¼äÌØÊâµÄ room¡£
+
+  ¶þ¡¢½ø½×Æª
+
+    ÒªÈÃÄãµÄÇøÓòÖÐ¸»ÓÐ±ä»¯£¬Éú¶¯ÓÐÈ¤£¬³ýÁËÎÄ×ÖÐðÊöµÄ·á¸»¶ÈÒÔÍâ£¬Äã¸ü¿ÉÒÔ
+ÀûÓÃ init() Õâ¸öº¯Ê½ÎªÄãµÄ·¿¼äÔö¼ÓÒ»Ð©¡¸»ú¹Ø¡¹»ò¡¸ÃØÃÜ¡¹¡£
+
+    ÕâÀï£¬ÏÈÈÃÎÒÃÇÁË½âÒ»ÏÂ init() µÄÓÃÍ¾ÎªºÎ£¬ºÍÎªÊ²÷áÒªÓÃµ½Ëü¡£Ã¿Ò»¸ö·¿
+¼äµÄ create() Ö»ÓÐµ± resetÊ±²Å»á±»ºô½Ðµ½£¬¶ø init() ÔòÊÇÔÚ BÎï¼þ½øÈëµ½ A
+Îï¼þÊ±¶¼»áºô½Ðµ½ AÎï¼þµÄ init() ¡£¿´µ½Õâ£¬ÄãÓ¦¸Ã¿ÉÒÔ¿´³ö²î±ðÁË£¬ÎÒÃÇÏ£Íû
+µ±Ò»¸öÎï¼þ£¨´Ë´¦½Ï¶àÊÇÍæ¼Ò£©½øµ½Ò»¸ö·¿¼äÊ±£¬ÄÜ¹»¾­ÓÉÄ³¸ö¶¯×÷Æô¶¯Õâ¸ö·¿¼ä
+µÄ»ú¹ØµÄ»°£¬×ÔÈ»ÊÇÀûÓÃ init() À´±àÐ´¡£
+
+    Ò»°ãµÄÊ¹ÓÃ·½Ê½£¬ÊÇÔÚ init() ÖÐÀûÓÃ add_action() À´ºô½ÐÄãÐ´µÄº¯Ê½£¬Æä
+¸ñÊ½Îª£º
+        add_action("function type", "action");
+
+    function type ¼´ÊÇ±»ºô½ÐµÄº¯Ê½Ãû    action ÊÇÆô¶¯µÄ¶¯×÷
+
+    ¶øÄã¾Í¿ÉÒÔ½«±» action Æô¶¯ááÒª·¢ÉúµÄÊÂ£¬¶¼Ð´ÔÚ±»ºô½ÐµÄº¯Ê½ÀïÃæ¡£ÀíÂÛ
+ÉÏÀ´Ëµ£¬ÀûÓÃÕâ¸ö·½Ê½ÎÒÃÇ¿ÉÒÔ×öµ½ÈÎºÎÊÂ£¬µ±È»£¬ÄÜ²»ÄÜ´ï³É¾Í¿´Ð´³ÌÊ½µÄ¹¦Á¦
+ÁË¡£ÏÂÃæ¾Ù¸ö¼òµ¥µÄÀý×Ó£º
+
+void init() 78% == (q Àë¿ª£¬b Ç°Ò»Ò³£¬ÆäËû¼ÌÐøÏÂÒ»Ò³)
+{
+        add_action("do_pick", "pick");
+}
+
+int do_pick(string arg)
+{
+        object me;
+
+        me = this_player();
+        if ( !arg || ( arg != "flower" ) ) return 
+notify_fail("ÄãÒªÕªÊ²÷á£¿\n");
+
+        else if ( random((int)me->query("kar")) < 7 )
+                message_vision("$N½«»¨ÕªÁËÏÂÀ´£¬µ«Ò»²»Ð¡ÐÄ±»´ÌÁËÒ»ÏÂ¡£\n", 
+me);
+
+        else
+                message_vision("$NÕªÏÂÒ»¶äÃÀÀöµÄÑªºìÉ«ÏÊ»¨¡£\n", me);
+
+        return 1;
+}
+   
+    µ±Íæ¼ÒÀûÓÃ pick Õâ¸öÖ¸ÁîÊ±¾Í»áºô½Ðµ½ do_pick() Õâ¸ö function£¬¶øÆô¶¯ÁË
+Õâ¸ö·¿¼äµÄ»ú¹Ø¡£
+
+    ÕâÀïÌØ±ðÌáµ½Ò»µã£¬Ò»¸ö¼òµ¥µÄ room ÎÒÃÇÎªÁËÊ¹¼ÇÒäÌåµÄÊ¹ÓÃÁ¿½µµ½×îµÍ£¬»á
+ÔÚ create() ×îáá¼ÓÉÏÒ»ÐÐ replace_program(ROOM); ¡£ÕâÊÇÒòÎªÔÚ·¿¼äµÄ±ê×¼Îï¼þ
+ÖÐÓÐ¶¨ÒåÁËÈç init() µÈÆäËûµÄº¯Ê½£¬¶øÒ»¸ö¼òµ¥µÄ·¿¼ä¸ù±¾Ã»ÓÐÓÃµ½£¬ËùÒÔÎÒÃÇÓÃ
+replace_program() À´½«Ô­±¾µÄ±»¼Ì³ÐµÄ±ê×¼Îï¼þ¡¸ÖØÖÃ¡¹£¨»òËµÈ¡´ú£©µô£¬µ«ÊÇÒ»
+µ©·¿¼äÖÐÓÃµ½ÁË init() À´±àÐ´Ê±£¬¾Í¾ø¶Ô²»¿ÉÒÔÓÃ replace_program()£¬ÒòÎªÏµÍ³
+½ìÊ±ÕÒ²»µ½ init() ±ã»áËæ±ãºô½ÐÒ»¸ö¼ÇÒäÌåÖÐµÄÎ»Ö·¶øËæ±ã´«½øÒ»Ð©ÂÒÆß°ËÔãµÄ¶«
+Î÷£¬Çé¿öÑÏÖØÊ±£¬ÉõÖÁ¿ÉÒÔÈÃÕû¸ö mud crash¡£µ«ÊÇ£¬ÎÒÃÇ×Ô²»¿ÉÒòÒ­·ÏÊ³£¬¸ÃÓÃµÄ
+Ê±ºò»¹ÊÇÒªÓÃ£¬ÕâÐ©Ó¦¸ÃÊÇÒ»¸öºÃµÄ³ÌÊ½Ð´×÷ÈËÔ±×Ô¼º±ØÐëÁôÒâµÄ£¬·¢Éú×´¿öÒª×Ô¼º
+¸ºÔð¡£
+
+  Èý¡¢½¨Òé
+
+    ÕâÀïÎÒÃÇÌá¹©ÁËÒ»¸ö¹¤¾ßÀ´ÈÃÎ×Ê¦ÃÇ¿ÉÒÔ·½±ãµÄ±àÐ´Ò»¸ö·¿¼ä£¬ÄÇ¾ÍÊÇ·¿¼ä±à¼­
+Æ÷(Roommaker) £¬Äã¿ÉÒÔ clone /obj/roommaker À´Ê¹ÓÃËü¡£Ò»°ãµÄ²½ÖèÊÇ£¬ÏÈÀûÓÃ
+mkroomÀ´ÔìÒ»¸ö¿Õ·¿¼ä£¬È»ááÀûÓÃ goto Õâ¸öÖ¸Áîµ½·¿¼äÀïÈ¥£¬ÔÙÓÃ rset short ºÍ
+connect À´Éè¶¨Õâ¸ö·¿¼äµÄ¶ÌÐðÊö¼°³ö¿Ú£¬¶øÏñÆäËûµÄÒ»Ð©ÊôÐÔÀýÈç outdoors µÈµÈ
+Ò²¶¼¿ÉÒÔÀûÓÃËûÀ´×öµ½£¬½ÓÖøÓÃ to rset long À´Éè¶¨Õâ¸ö·¿¼äµÄ³¤ÐðÊö£¬×îááÔÙÓÃ
+saveroom½«Õâ¸ö·¿¼ä´æµµ¡£ÒªÊÇÕâÖ»ÊÇÒ»¸ö»ù±¾µÄ·¿¼ä£¬ÄÇµ½ÕâÀï¾Í´ó¹¦¸æ³ÉÁË£¬Òª
+ÊÇ¡õÏëÈÃÕâ¸ö·¿¼ä¸»ÓÐ±ä»¯£¬ÄÇ¾ÍÔÙÓÃÏßÉÏ±à¼­Æ÷ edit »ò½«Õâ¸ö·¿¼äµÄµµ°¸ ftp
+»ØÈ¥¼ÌÐøÐÞ¸Ä¡£
+Subject: roomµÄÊôÐÔ (fwd)
+
+/doc/build/room_pro
+
+¡õ ·¿¼äÊôÐÔ
+
+"short"                                                         (string)
+
+    ·¿¼äµÄ¶ÌÐðÊö¡£
+
+"long"                                                          (string)
+
+    ·¿¼äµÄ³¤ÐðÊö¡£
+
+"item_desc"                                                     (mapping)
+
+    ·¿¼äÖÐ¸ö±ð¾°ÎïµÄÐðÊö£¬¸ñÊ½Îª£º([ <¾°ÎïÃû³Æ>:<¾°ÎïÐðÊö>, .... ])¡£
+    ÆäÖÐ<¾°ÎïÐðÊö>¿ÉÒÔÊÇ×Ö´®»ò function type¡£
+
+"exits"                                                         (mapping)
+
+    ·¿¼äµÄ³ö¿Ú£¬°üÀ¨ÓÐÃÅµÄ·½Ïò£¬¸ñÊ½Îª£º([  <³ö¿Ú>:<·¿¼äµµÃû>, .... ])¡£
+
+"objects"                                                       (mapping)
+
+    ·¿¼äÖÐµÄÎïÆ·¡¢ÉúÎï£¬¸ñÊ½£º([ <ÎïÆ·»òÉúÎïµµÃû>:<ÊýÁ¿>, .... ])¡£
+
+"outdoors"                                                      (string)
+
+    ·¿¼äÊÇ·ñÎª¡¸»§Íâ¡¹£¬»§Íâ·¿¼ä¿ÉÒÔ¿´µ½ÌìÉ«±ä»¯ÓëÆøºòÓ°Ïì¡£×Ö´®µÄÒâÒå
+    ±íÊ¾·¿¼äµÄÆøºòÇø£¬Í¨³£ºÍ¸ÃÇøÓòµÄ domain (¼´ /d ÏÂµÄÄ¿Â¼Ãû³Æ) Í¬¡£
+
+"no_fight"                                                      (int)
+
+    ·¿¼äÊÇÎª½ûÖ¹×÷Õ½ÇøÓò¡£
+
+"no_magic"                                                      (int)
+
+    ·¿¼äÊÇÎª½ûÖ¹Ê©·¨ÇøÓò¡£
+
+**************************************************************************************
+***********************************************************************************
+
+                         1¡£LPCÈëÃÅ(ÉÏ)
+
+
+LPC¾ÍÊÇÎÒÃÇÓÃÀ´Ð´MUDµÄÓïÑÔÀ²£¬ËüµÄÓï·¨ºÍC »ù±¾Ò»Ñù¡£Ëü¶ÀÌØÖ®´¦ÔÚÓÚÓÐ¼òµ¥µÄ
+OOPÌØÐÔ(¼òµ¥µ«ºÜÓÐÓÃ:PP)£¬»¹ÓÐÒ»¸öCÀïÃæÃ»ÓÐµÄHASH±íµÄÀàÐÍ£ºMAPPING
+LPCºÍC»¹ÓÐÒ»¸ö²»Í¬ÊÇÆäÖ÷º¯ÊýÊÇCREATE()¶ø²»ÊÇMAIN()¡£create()±ðÐ´´íÅ¶:PP
+
+    LPCÀïÃæÖ÷ÒªµÄ(Ò²ÊÇÐ´MUDËù×ã¹»µÄ)Êý¾ÝÀàÐÍÓÐint,string,mapping,object,
+mixed¡£ÏÂÃæÖ÷Òª½²Ò»ÏÂÕâÐ©ÀàÐÍÁË¡£
+
+    ÒòÎªÕûÊýÀàÐÍ¶ÔÓÚÐ´MUDÒÑ¾­×ã¹»£¬ËùÒÔ²»ÓÃFLOATÁË¡£Í¬ÑùµÄ£¬ÒòÎªÎÒÃÇµÄ
+ºº×ÖÊÇË«×Ö½ÚµÄ£¬ËùÒÔCHARÀàÐÍÆäÊµÒ²Ã»ÓÃ£¬Ö»ÐèÒªSTRING ÀàÐÍ¾Í¿ÉÒÔÁË¡£
+STRINGµÄ¶¨Òå£¬ÕâÀïÒªÌáÒ»ÏÂ£ºstring³£Á¿µÄ¸³Öµ£¬¼ÙÈçÊÇ³£Á¿µÄ»°¿ÉÒÔÖ»ÓÃ
+¡°Á¬½Ó¡±µÄ°ì·¨´úÌæstring£¬ÀýÈç:
+        string str = "ÎÒ" "ÃÇ" ;ÄÇÃ´½á¹ûÊÇstr == "ÎÒÃÇ"
+Í¬ÑùµÄstr = 
+                "ÎÒ"
+                "ÃÇ";Ò²ÊÇÒ»Ñù£¬¿Õ¸ñÓë»»ÐÐÔÚLPC±àÒëÊ±ÊÇ±»ºöÂÔµÄ£¬ËùÒÔÎÒÃÇ
+Ð´MUDµÄÊ±ºî²»·Â¶àÐ©TABºÍ»»ÐÐ£¬ÕâÑù³ÌÐòÈÝÒ×¿´Ð©¡£
+µ±È»£¬³ýÁËÖ±½ÓÁ¬½ÓÖ®Íâ»¹¿ÉÒÔÓÃ + Á¬½Ó¡£ÔÚÓÐ±äÁ¿µÄÊ±ºî¾ÍÒªÓÃÁË¡£ÀýÈç£º
+        string str0 = "ÎÒÃÇ";
+        string str1 = "ºÍ"+str0+"´ó¼Ò";
+        ½á¹ûÊÇstr1 == "ºÍÎÒÃÇ´ó¼Ò"
+
+    mixedÊÇÒ»¸ö±È½ÏÌØ±ðµÄÀàÐÍ¡£mixed ÀàÐÍµÄ±äÁ¿¿ÉÒÔ¸³ÈÎºÎÆäËûÀàÐÍµÄÖµ¡£
+ÕâÔÚÎ´Öª±äÁ¿ÀàÐÍµÄÊ±ºî·Ç³£ÓÐÓÃ¡£²»¹ýÒ»°ãÇé¿öÏÂºÜÉÙ»áÓÃµ½mixed¡£
+
+    LPCÀïÃæÃ»ÓÐ¡°Ö¸Õë¡±µÄ¸ÅÄî¡£ÔÚ±äÁ¿ÃûÇ°Ãæ¼Ó * µÄ¶¨Òå±íÊ¾Êý×é¡£Èçint *a
+±íÊ¾a ÊÇÕûÊýÊý×é¡£Ò»°ãÀ´ËµÎÒÃÇ¶¨ÒåÊý×éÊ±ÊÇÎ´ÖªÆä´óÐ¡µÄ¡£ËùÒÔ¶¨ÒåÊ±²»ÓÃÏó
+C ÄÇÑù¸ø¶¨´óÐ¡¡£Êý×éºÍMAPPINGÓÐÐ©ÀàËÆ£¬ËùÒÔ½«ÔÚÏÂÃæºÍMAPPINGÒ»Æð½²ËüÃÇ
+µÄ²Ù×÷¡£
+
+**************************************************************************************
+*********************************************************************************
+              
+                             LPCÈëÃÅ £¨ÖÐ£©
+
+
+    LPCÀïÃæÃ»ÓÐ¡°Ö¸Õë¡±µÄ¸ÅÄî¡£ÔÚ±äÁ¿ÃûÇ°Ãæ¼Ó * µÄ¶¨Òå±íÊ¾Êý×é¡£Èçint *a
+±íÊ¾a ÊÇÕûÊýÊý×é¡£Ò»°ãÀ´ËµÎÒÃÇ¶¨ÒåÊý×éÊ±ÊÇÎ´ÖªÆä´óÐ¡µÄ¡£ËùÒÔ¶¨ÒåÊ±²»ÓÃÏó
+C ÄÇÑù¸ø¶¨´óÐ¡¡£Êý×éºÍMAPPINGÓÐÐ©ÀàËÆ£¬ËùÒÔ½«ÔÚÏÂÃæºÍMAPPINGÒ»Æð½²ËüÃÇ
+µÄ²Ù×÷¡£
+
+    object, ÊÇOOP¸ÅÄîÁË£¬ÔÚLPCÀïÃæºÃÏóÓÐCREATE()µÄ¶¼¿ÉÒÔ×öobject ÀàÐÍ±äÁ¿
+ÁË¡£object ÎÒÃÇ³ÆÎª¡°¶ÔÏó¡±£¬ÔÚMUDÀï¾ÍÊÇÒ»¼þÎïÆ·£¬Ò»¸ö·¿¼ä»òÈÎºÎÒ»¸ö¡°¾ß
+Ìå¡±µÄ¶«Î÷£¬¶¼ÊÇOBJECT¡£¡°¶ÔÏó¡±£¬ÔÚOOPÖÐÊÇÒ»Ð©Êý¾ÝÓë»ùÓÚÕâÐ©Êý¾ÝµÄº¯ÊýµÄ
+¼¯ºÏ£¨ºÃÏóÎÄÖßÖßµÄ£¿ :PP£©àÅ£¬object ÖÐµÄÊý¾ÝÒ»°ã²»ÄÜÖ±½Ó²Ù×÷£¨ÖÁÉÙÔÚLPC
+ÀïÃæ²»ÄÜµÄ :PP£©£¬ËùÒÔ¶ÔobjectµÄ²Ù×÷Ö»ÓÐ¸³Öµ£¨¶ÔobjectÀàÐÍµÄ¸³Ö± £©ºÍÖ´ÐÐ
+objectµÄº¯Êý( privateº¯Êý²»ÄÜ±»Íâ²¿µ÷ÓÃ )¡£
+º¯Êýµ÷ÓÃ¸ñÊ½£º
+eg.     object ob;
+        ob->test(1,2);
+
+        »ù±¾¸ñÊ½£º objectÀàÐÍ±äÁ¿Ãû->º¯ÊýÃû(º¯Êý²ÎÊýÁÐ);
+ÆäÖÐÈô¸Ãobject ÖÐÎ´¶¨Òå¸Ãº¯ÊýÃûµÄº¯ÊýÔò·µ»Ø 0 Öµ£¨ºÇºÇ£¬²»»áÓÐ³ö´íÐÅÏ¢µÄÅ¶£¬
+ËùÒÔÇ§Íò±ðÐ´´íÃû×ÖÁË£©¡£
+
+    Ð´ÁËÕâÃ´¶àÖÕÓÚÐ´µ½LPC ×îÓÐÌØÉ«µÄÁ½¸öÀàÐÍÁË£¬mappingºÍÊý×é¡£
+mappingºÍÊý×éÔÚ¡°Íâ¹Û¡±ÉÏÓÐÐ©ÀàËÆ£¬ËùÒÔÔÚÒ»ÆðÐ´ÁË¡£Ç°ÃæÌáµ½¹ý£ºmappingÊÇ
+É¢ÁÐ±í£¬¾ßÌåÈçºÎÕâÀï²»ÏêÊöÁË£¬Ö»Ï£Íû´ó¼ÒÒ»¶¨Òª¼Ç×¡mappingµÄ¸ñÊ½£¡£¡( Êµ¼Ê
+ÉÏÕâ¸ñÊ½Ö»ÔÚ¸ø±äÁ¿¸³³õÖµÊ±ÓÃµ½ )mapping ¸ñÊ½ÈçÏÂ£º
+eg.     mapping a = ([ "ab" : 1 ,
+                        "cd": 2 ,
+                        ])
+±ê×¼¸ñÊ½£º
+        mapping ±äÁ¿Ãû = ([
+                                key1 : value1 ,
+                                key2 : value2 ,
+                                ..........
+                                ..........
+                        ]);
+ÆäÖÐkey¿ÉÒÔÊÇ³ýÁËintÒÔÍâµÄÈÎºÎÖµ£¡£¡ (ºÃÏócharÒ²²»ÐÐ°É :P )£¬°üÀ¨ÈÎºÎÊý×é
+ÉõÖÁmappingÒ²¿ÉÒÔ×ökey ,¶øvalueÔò¿ÉÒÔÊÇÈÎÒâËùÓÐÖµ¡£mappingµÄÓ¦ÓÃÔÚÓÚ£º
+¿ÉÒÔÓÃkeyÀ´indexµÃµ½ÏàÓ¦µÄvalueÖµ¡£ÈçÉÏÃæegµÄ£¬ÎÒÃÇÓÐ£ºa["cd"] == 2,....
+ÒòÎªÒªÓÃkeyÀ´indexµÄ¹ØÏµ£¬ÔÚmappingÖÐkeyÖµ²»ÄÜÏàµÈ£¬ÈôÏàµÈÔò¸²¸ÇµôÔ­À´¸Ã
+key¶ÔÓ¦µÄvalue¡£Ð´µÄÓÐÐ©ÂÒÁË£¬SORRY :P
+
+    ÄÇÃ´Ò»¸ömappingÔõÃ´¸Ä±äËüµÄÖµÄØ£¿ÓÐÁ½¸ö·½·¨(ÏÂÃæÉèmapping map )¡£
+1. map[key] = value;
+2. map += ([key : value ]);
+Çë´ó¼ÒÁôÒâµÚ¶þÖÖ¸³Öµ·½·¨£¬Ëü¸úÎÒÃÇ½«ÒªÌáµ½µÄÊý×éµÄ·½·¨Ò»ÑùµÄ ¡£
+ÔÚmappingÖÐ¡°É¾³ý¡±Ò»¸ökey £¨ÆäÏàÓ¦valueµ±È»Ò²Ã»ÁË£©·½·¨ÊÇ£º
+        map_delete(map,key);
+lpcÀïÃæµÄÏµÍ³º¯Êý(efun)µÄÃüÃûÒ»°ã°´²ÎÊýË³ÐòÀ´È¡Ãû£¨ map_deleteµÄ²ÎÊý¾ÍÊÇ
+
+mapÔÚÇ°£¬±»deleteµÄkeyÔÚºóµÄ £©£¬Ï£Íû´ó¼Ò×¢Òâ¡£
+ÁíÍâmappingµÄefun»¹ÓÐvalues,keys,undefinedp
+´ó¼Ò¿ÉÒÔÖ±½ÓÔÚMUDÀï help efunname À´¿´°ïÖú£¬Ò²¿ÉÒÔ²ÎÔÄ /doc/lpc/types/mapping
+ÕâÒ»ÎÄ¼þ

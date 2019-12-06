@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["exits":(["out":"/d/taohuacun/taohua7",]),"long":"你走进了天馨居。一股若有若无的甜香扑鼻而来。琴剑书画，挂在墙上。  锦笼纱罩，金彩珠光。小几上汝窑美人瓶内的桃花正自盛开。  右首一张床，床头放着五彩鸾纹被。","no_fight":1,"id":"h_jwe","no_get":1,"home_host":({"jwe","yfang",}),"bed_long":"I love you yfangI love you yfangI love you yfangI love you yfang","file_name":"h_jwe","name":"天馨居","no_magic":1,"short":"天馨居",])
+out "/d/taohuacun/taohua7"

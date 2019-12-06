@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_mlei","home_host":({"mlei","linyiyi",}),"file_name":"h_mlei","bed_long":"床上被禄整洁，柔软舒适，真是令人陶醉的好地方。","no_magic":1,"name":"遥梦阁","short":"遥梦阁","no_get":1,"exits":(["out":"/d/taohuacun/taohua7",]),"no_fight":1,"long":"这是一幢非常精美的阁楼，柱子和家具是用华贵的紫檀木制成，上面雕饰着美丽的图画，画工精巧，美不 胜收。地板不知是用什么材料做的，走在上面毫无声息，你只感到脚下软软的，非常舒服。这里是你们夫 妇生活和休息的地方。",])
+out "/d/taohuacun/taohua7"

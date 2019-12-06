@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["bed_long":"好大的一个床，软软的，舒服极了，柔软舒适的两个大枕头并排放在床头，蓝色的天鹅绒被子一角斜拖在地板上。","no_fight":1,"no_magic":1,"home_host":({"shosha","sbird",}),"file_name":"h_shosha","long":"这是间很温馨的房间。金黄色的阳光洒满了整个房间.女主人喜欢白色，所以整个房间都是白色的。白色的窗纱、白色的家具、白色的床，连窗前的玫瑰都是白色的。墙角的玻璃圆桌上，放着一套茶具，主人正在沏茶，一股茶叶的清香扑鼻而来。","exits":(["out":"/d/taohuacun/taohua7",]),"name":"爱鸟居","id":"h_shosha","short":"爱鸟居","no_get":1,])
+out "/d/taohuacun/taohua7"

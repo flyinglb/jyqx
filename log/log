@@ -1,0 +1,206 @@
+/d/murong/obj/xiangcha.c line 93: Warning: Unused local variable 'heal' before the end of line
+/d/murong/xiaozhou3.c line 26: Warning: Unused local variable 'fam' before the end of line
+/d/tiezhang/wmfeng.c line 93: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/murong/xiaozhou3.c line 26: Warning: Unused local variable 'fam' before the end of line
+/d/tiezhang/wmfeng.c line 93: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/murong/xiaozhou3.c line 26: Warning: Unused local variable 'fam' before the end of line
+/d/tiezhang/wmfeng.c line 93: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/murong/xiaozhou3.c line 26: Warning: Unused local variable 'fam' before the end of line
+/d/tiezhang/wmfeng.c line 93: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/murong/bishuiting.c line 8: Warning: Number of arguments disagrees with previous definition. before ;
+/d/murong/anbian3.c line 153: Warning: Unused local variable 'dir' before the end of line
+/d/murong/guanxingtai.c line 256: Warning: Unused local variable 'i' before the end of line
+/d/tiezhang/wmfeng.c line 93: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/npc/spoiler.c line 405: Warning: Unused local variable 'ob' before the end of line
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/d/murong/xiaozhou3.c line 26: Warning: Unused local variable 'fam' before the end of line
+/d/tiezhang/wztang.c line 46: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/tiezhang/pingtai.c line 48: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/murong/obj/xiangcha.c line 93: Warning: Unused local variable 'heal' before the end of line
+/d/murong/anbian3.c line 153: Warning: Unused local variable 'dir' before the end of line
+/d/tiezhang/wmfeng.c line 93: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/npc/spoiler.c line 405: Warning: Unused local variable 'ob' before the end of line
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/d/murong/obj/xiangcha.c line 93: Warning: Unused local variable 'heal' before the end of line
+/d/murong/xiaozhou3.c line 26: Warning: Unused local variable 'fam' before the end of line
+/d/npc/spoiler.c line 405: Warning: Unused local variable 'ob' before the end of line
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/d/npc/spoiler.c line 405: Warning: Unused local variable 'ob' before the end of line
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/d/npc/spoiler.c line 405: Warning: Unused local variable 'ob' before the end of line
+/adm/daemons/network/dns_master.c line 580: Warning: Expression has no side effects, and the value is unused before  (!(mud_svc[mud]["te
+/adm/daemons/network/dns_master.c line 589: Warning: Expression has no side effects, and the value is unused before  ;
+/d/tiezhang/wztang.c line 46: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/tiezhang/pingtai.c line 48: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/murong/xiaozhou3.c line 26: Warning: Unused local variable 'fam' before the end of line
+/d/murong/xiaozhou3.c line 26: Warning: Unused local variable 'fam' before the end of line
+/d/tiezhang/wmfeng.c line 93: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/murong/obj/xiangcha.c line 93: Warning: Unused local variable 'heal' before the end of line
+/d/tiezhang/wmfeng.c line 93: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/tiezhang/wmfeng.c line 93: Warning: Expression has no side effects, and the value is unused before the end of line
+/d/murong/anbian3.c line 153: Warning: Unused local variable 'dir' before the end of line
+/d/murong/bishuiting.c line 8: Warning: Number of arguments disagrees with previous definition. before ;
+/d/murong/anbian3.c line 153: Warning: Unused local variable 'dir' before the end of line
+/d/murong/xiaozhou3.c line 26: Warning: Unused local variable 'fam' before the end of line
+/d/murong/anbian3.c line 153: Warning: Unused local variable 'dir' before the end of line
+/d/tiezhang/wmfeng.c line 93: Warning: Expression has no side effects, and the value is unused before the end of line
+/u/buscar/workroom.c line 9: parse error before ("long",@LONG
+/d/tiezhang/wmfeng.c line 93: Warning: Expression has no side effects, and the value is unused before the end of line

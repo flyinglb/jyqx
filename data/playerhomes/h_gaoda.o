@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_gaoda","bed_long":"爱的摇篮","name":"爱的小屋","long":"粉红的墙壁，东墙角有挂满女士衣服的衣橱，南面靠墙放着一套家庭影院，西面放着好看的装饰品床靠在北面的墙头，墙上挂了一幅《高达和爱你的人》的好大的结婚照.","home_host":({"gaoda","andr",}),"exits":(["out":"/d/taohuacun/taohua7",]),"file_name":"h_gaoda","short":"爱的小屋","no_magic":1,"no_fight":1,"no_get":1,])
+out "/d/taohuacun/taohua7"

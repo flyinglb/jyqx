@@ -1,0 +1,2 @@
+// music.c
+inherit SKILL;

@@ -1,0 +1,230 @@
+     // tong-ren.c 铜人
+
+     inherit NPC;
+
+     void fight_ob(object ob)
+     {
+             object *inv;
+             int amount;
+             inv = all_inventory(environment());
+             for(int i=0;i<sizeof(inv);i++) {
+                     if( (inv[i]->query("id") == "tong ren") 
+                     && inv[i]->is_fighting(ob) ) amount ++;
+             }
+             if(amount>4) return;
+             ::fight_ob(ob);
+     }
+
+     void kill_ob(object ob)
+     {
+             object *inv;
+             int amount;
+             inv = all_inventory(environment());
+             for(int i=0;i<sizeof(inv);i++) {
+                     if( (inv[i]->query("id") == "tong ren") 
+                     && inv[i]->is_fighting(ob) ) amount ++;
+             }
+             if(amount>4) return;
+             ::kill_ob(ob);
+     }
+
+     void create()
+     {
+             set_name("铜人", ({ "tong ren", "tong" }) );
+             set("gender", "男性" );
+             set("age", 20);
+             set("long", "一个由不知名的前辈高人制作的练功用的机关铜人，他比真人稍大一点。\n");
+             set("attitude", "heroism");
+
+             set("str", 25);
+             set("con", 25);
+             set("dex", 25);
+             set("int", 25);
+
+             set("no_get", "1");
+             set("max_qi", 300);
+             set("eff_qi", 300);
+             set("qi", 300);
+             set("max_jing", 100);
+             set("jing", 100);
+             set("neili", 300);
+             set("max_neili", 300);
+             set("jiali", 10);
+             set("shen_type", 0);
+
+             set("combat_exp", 50000);
+
+             set_skill("force", 30); 
+             set_skill("unarmed", 30);
+             set_skill("dodge", 30);
+             set_skill("parry", 30);
+             set("no_beg_from", "1");
+             set("no_steal_from", "1");
+
+             setup();
+
+             carry_object("/d/npc/obj/tongpi")->wear();
+     }
+
+     int no_clean() {return 1;}
+
+     void init()
+     {
+             add_action("do_shou","shouqi");
+     }
+
+     int do_shou(string arg)
+     {
+             object me, obj;
+             me = this_player();
+             if(!wizardp(me)) return 0;
+             if(!arg || (arg != "tong ren" && arg != "tong")) return 0;
+             
+             if(query("buy_master") != me->query("id"))
+                     return notify_fail("你将铜人左看右看，上上下下的摆弄了一阵，怎么也收不起来。\n");
+             
+             message_vision(HIY"$N"HIY"在铜人身上，按动了几个开关，只听一阵机关响动，铜人居然变成了个铜盒。\n" NOR, me);
+             obj = new("/d/npc/obj/tong-box");
+             obj->set("buy_master", query("buy_master"));
+             if(!obj->move(me))
+                     obj->move(environment(me));
+             this_object()->move(VOID_OB);
+             destruct(this_object());
+             return 1;
+
+     }
+
+
+     int accept_fight(object ob)
+     {
+             object me, who, *inv;
+             mapping hp_status, skill_status, map_status, prepare_status;
+             string *sname, *mname, *pname;
+             int i, temp, amount;
+
+             who = this_player();
+             me = this_object();
+
+             if(is_fighting()) return 0;
+             
+             if((int)who->query_temp("fight_tongren")<5) {
+                     who->add_temp("fight_tongren",1);
+             } else return 0;
+             
+             inv = all_inventory(environment());
+             for(i=0;i<sizeof(inv);i++) {
+                     if( (inv[i]->query("id") == "tong ren") 
+                     && inv[i]->is_fighting(me) ) amount ++;
+             }
+             if(amount>5) return 0;
+             
+             if (me->query("last_fighter") == ob->query("id"))
+                     return notify_fail("你刚跟这个铜人练过功！\n");         
+             
+             me->set("last_fighter", ob->query("id"));
+
+             remove_call_out("renewing");    
+             call_out("renewing", 200 + random(200), me);
+
+     /* delete and copy skills */
+
+             if ( mapp(skill_status = me->query_skills()) ) {
+                     skill_status = me->query_skills();
+                     sname  = keys(skill_status);
+
+                     temp = sizeof(skill_status);
+                     for(i=0; i<temp; i++) {
+                             me->delete_skill(sname[i]);
+                     }
+             }
+
+             if ( mapp(skill_status = ob->query_skills()) ) {
+                     skill_status = ob->query_skills();
+                     sname  = keys(skill_status);
+
+                     for(i=0; i<sizeof(skill_status); i++) {
+                             me->set_skill(sname[i], skill_status[sname[i]]);
+                     }
+             }
+             
+     /* delete and copy skill maps */
+
+             if ( mapp(map_status = me->query_skill_map()) ) {
+                     mname  = keys(map_status);
+
+                     temp = sizeof(map_status);
+                     for(i=0; i<temp; i++) {
+                             me->map_skill(mname[i]);
+                     }
+             }
+
+             if ( mapp(map_status = ob->query_skill_map()) ) {
+                     mname  = keys(map_status);
+
+                     for(i=0; i<sizeof(map_status); i++) {
+                             me->map_skill(mname[i], map_status[mname[i]]);
+                     }
+             }
+             
+     /* delete and copy skill prepares */
+
+             if ( mapp(prepare_status = me->query_skill_prepare()) ) {
+                     pname  = keys(prepare_status);
+
+                     temp = sizeof(prepare_status);
+                     for(i=0; i<temp; i++) {
+                             me->prepare_skill(pname[i]);
+                     }
+             }
+
+             if ( mapp(prepare_status = ob->query_skill_prepare()) ) {
+                     pname  = keys(prepare_status);
+
+                     for(i=0; i<sizeof(prepare_status); i++) {
+                             me->prepare_skill(pname[i], prepare_status[pname[i]]);
+                     }
+             }
+             
+             hp_status = ob->query_entire_dbase();
+
+                     me->set("str", hp_status["str"]);
+                     me->set("int", hp_status["int"]);
+                     me->set("con", hp_status["con"]);
+                     me->set("dex", hp_status["dex"]);
+
+                     me->set("max_qi",    hp_status["max_qi"]);
+                     me->set("eff_qi",    hp_status["eff_qi"]);
+                     me->set("qi",        hp_status["qi"]);
+                     me->set("max_jing",  hp_status["max_jing"]);
+                     me->set("eff_jing",  hp_status["eff_jing"]);
+                     me->set("jing",      hp_status["jing"]);
+                     me->set("max_neili", hp_status["max_neili"]);
+                     me->set("neili",     hp_status["neili"]);
+                     me->set("jiali",     hp_status["jiali"]);
+                     me->set("combat_exp",hp_status["combat_exp"]*10/9);
+
+             return 1;
+     }
+
+     void renewing(object me)
+     {
+             object who = present(query("buy_master"), environment(me));
+             //需要清除
+             if(!who) {
+                     who = find_player("buy_master");
+                     if(objectp(who) && ((int)who->query_temp("fight_tongren") > 0) )
+                             who->add_temp("fight_tongren",-1);
+                     this_object()->move(VOID_OB);
+                     destruct(this_object());
+                     return;
+             }
+             me->delete("last_fighter");
+
+     }
+     void die()
+     {
+             message_vision(HIC"$N死了。\n"NOR, this_object());
+             this_object()->move(VOID_OB);
+             destruct(this_object());
+     }
+

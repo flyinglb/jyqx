@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_ainiyiwan","no_fight":1,"name":"标准新房","no_magic":1,"long":"一切都设置好了，只等一些室内装修。","no_get":1,"short":"标准新房","bed_long":"chuang","home_host":({"ainiyiwan","qinwufeiyang",}),"exits":(["out":"/d/taohuacun/taohua7",]),"file_name":"h_ainiyiwan",])
+out "/d/taohuacun/taohua7"

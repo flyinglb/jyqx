@@ -1,0 +1,2 @@
+// chess.c
+inherit SKILL;

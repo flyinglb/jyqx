@@ -1,0 +1,5 @@
+#/d/taohuacun/obj/home.c
+dbase (["no_get":1,"no_fight":1,"file_name":"h_roger","name":"飞花映月阁","home_host":({"roger","yufei",}),"no_magic":1,"id":"h_roger","short":"飞花映月阁","exits":(["out":"/d/taohuacun/taohua7",]),"long":"
+一切都设置好了，只等一些室内装修。
+",])
+out "/d/taohuacun/taohua7"

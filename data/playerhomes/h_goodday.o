@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["short":"love_forever","long":"这是一个温馨的小屋，充满着爱","id":"h_goodday","no_magic":1,"exits":(["out":"/d/taohuacun/taohua7",]),"no_get":1,"no_fight":1,"name":"love_forever","home_host":({"goodday","exit",}),"file_name":"h_goodday",])
+out "/d/taohuacun/taohua7"

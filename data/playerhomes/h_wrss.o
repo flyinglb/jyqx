@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["no_fight":1,"no_get":1,"short":"这是一间漂亮的新人房","id":"h_wrss","bed_long":"那是一个用水晶做成的床。。","exits":(["out":"/d/taohuacun/taohua7",]),"home_host":({"wrss","xiaoruo",}),"long":"这里的空气清新！让人有一种说不出的快乐","no_magic":1,"file_name":"h_wrss","name":"这是一间漂亮的新人房",])
+out "/d/taohuacun/taohua7"

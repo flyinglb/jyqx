@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["short":"这是一座世纪恋人的家园，它的出现是这两个爱人更加恩爱，希望世纪的曙光能永远照亮他们永不变的姻缘！","no_magic":1,"no_get":1,"id":"h_liujinqi","exits":(["out":"/d/taohuacun/taohua7",]),"home_host":({"liujinqi","nmd",}),"no_fight":1,"file_name":"h_liujinqi","long":"一切都设置好了，只等一些室内装修。","name":"这是一座世纪恋人的家园，它的出现是这两个爱人更加恩爱，希望世纪的曙光能永远照亮他们永不变的姻缘！",])
+out "/d/taohuacun/taohua7"

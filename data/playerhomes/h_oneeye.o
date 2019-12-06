@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_oneeye","long":"这是月亮的最后一晚，从此我将孤独一生。","name":"随心居","bed_long":"el","no_magic":1,"short":"随心居","no_fight":1,"home_host":({"oneeye","rouer",}),"no_get":1,"file_name":"h_oneeye","exits":(["out":"/d/taohuacun/taohua7",]),])
+out "/d/taohuacun/taohua7"

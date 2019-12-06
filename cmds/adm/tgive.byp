@@ -1,0 +1,30 @@
+
+void do_give(object who)
+{
+        object ob;
+        ob = new(THCASH_OB);
+        ob->set_amount(20);
+        ob->move(who);
+        tell_object(who,HIG"突然从天上叮叮当当的掉了些东西到你身上……\n"NOR);
+}
+
+int main(object me, string arg)
+{
+        object *obs;
+        int i, i1, y, n;
+        obs = children(USER_OB);
+        y=0;n=0;
+        for(i=0,i1=sizeof(obs);i<i1;i++) {
+		if( !environment(obs[i]) ) continue;
+                if( obs[i]->query("Daemons_Login_New_User") > 0 ) {
+                        n++;
+                        tell_object(obs[i],HIG"突然从远方的天空传来叮叮当当的声音……\n可惜不一会就离你远去了……\n"NOR);
+                        continue;
+                }
+                y++;
+                do_give(obs[i]);
+        }
+        write("共有"+y+"位玩家符合要求，"+n+" 位不符合\n");
+        return 1;
+}
+

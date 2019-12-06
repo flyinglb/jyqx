@@ -1,0 +1,80 @@
+// linnei.c
+#include <ansi.h>
+#include <room.h>
+inherit ROOM;
+void create()
+{
+         set("short","林内");
+         set ("long",@long
+这是一片密密的竹林。这里人迹罕至，惟闻足底叩击路面，有僧敲
+木鱼声；微风吹拂竹叶，又如簌簌禅唱。令人尘心为之一涤，真是绝佳
+的禅修所在。旁边有一个山洞，但被岩石(stone)堵住了。
+long);
+         set("item_desc", ([
+             "stone" : "一块巨大岩石，把洞口堵住了。\n",
+]));
+
+setup();
+}
+
+void init()
+{
+    add_action("do_break", "break");
+    add_action("do_jump","zhuan");
+}
+int do_break(string arg)
+{
+        int n;
+        n = this_player()->query("neili");
+        if( !arg || arg!="shi" ) {
+                write("你要打碎什么的东西！\n");
+                return 1;
+        }
+
+  message_vision(
+   "$N深吸一口气，双掌同时拍出。\n", this_player());
+
+  if (n>=500) {
+        message_vision(
+ "$N只听一声“轰”的一声，$N把岩石震开了！发现有一个洞口。\n", this_player());
+        set("exits/enter", __DIR__"dongnei");
+        this_player()->set("neili",n-500);
+        remove_call_out("close");
+        call_out("close", 5, this_object());
+        }
+        else {
+        message_vision(
+        "$N用力击向岩石，结果什么也没发生。看来$N的内力不够强。\n", this_player());
+        this_player()->set("neili",0);
+           }
+
+        return 1;
+    }
+
+     void close(object room)
+    {
+message("vision","岩石滚回了原位，又挡住了洞口。\n", room);
+         room->delete("exits/down");
+   }
+int do_jump(string arg)
+{
+        object me;
+me = this_player();
+
+        if (arg !="zhulin") 
+return notify_fail("你要钻到那里去？\n");
+if( arg=="zhulin")
+        {
+            
+                    write("你弯下腰钻出了竹林。\n");
+                    message("vision",
+                             me->name() + "弯身钻了过去。\n",
+                             environment(me), ({me}) );
+                    me->move(__DIR__"zhulin10");
+                    message("vision",
+                    me->name() + "从竹林中钻了过来。\n",
+                                environment(me), ({me}) );
+                }
+                return 1;
+ }
+

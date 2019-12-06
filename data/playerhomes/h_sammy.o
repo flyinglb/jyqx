@@ -1,0 +1,6 @@
+#/d/taohuacun/obj/home.c
+dbase (["exits":(["out":"/d/taohuacun/taohua7",]),"no_fight":1,"file_name":"h_sammy","no_get":1,"long":"这里就是名动江湖的宝芝林。
+黄飞鸿、灵儿夫妇平日双双仗剑江湖之余，便厮守于此。
+这里四周栽满了各式各样的花，充满了芬芳与温馨的气氛。
+","no_magic":1,"name":"宝芝林","short":"宝芝林","home_host":({"sammy","hfh",}),"id":"h_sammy",])
+out "/d/taohuacun/taohua7"

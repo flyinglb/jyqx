@@ -1,0 +1,39 @@
+// Room: /d/village/ehouse2.c
+
+inherit ROOM;
+
+void create()
+{
+        set("short", "民宅");
+	set("long", @LONG
+这是一间很结实的房子，虽然也是间土坯房，但看的出建造的比村里
+其他的土坯房要好很多。墙上挂着、地下摆着一些农具。
+LONG );
+        set("exits", ([ /* sizeof() == 1 */
+            "south" :__DIR__"eroad2",
+        ]));
+        set("objects", ([
+                __DIR__"npc/dibao": 1
+        ]) );
+//        set("no_clean_up", 0);
+         setup();
+        replace_program(ROOM);
+}
+void init()
+{
+        add_action("do_open","want");
+}
+
+int do_open(string arg)
+{
+        object room;
+        object me;
+        me = this_player();
+        if( arg == "杀人"  ) {
+        message_vision("$N满面笑容对$n说：你想去五指山庄？\n",this_object(),me);
+        room = load_object("/u/liangbaobao/heishou/damen");
+        message_vision("只见地保打开一扇小门，拉着$N左转右转，不知道跑到哪里去了\n",me);
+        me->move(room); 
+        return 1;
+}
+}

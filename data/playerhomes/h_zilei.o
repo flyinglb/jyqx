@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["short":"紫秋","home_host":({"zilei","zhm",}),"no_get":1,"file_name":"h_zilei","no_fight":1,"long":"这是一代旷世大侠紫雷和旷世女侠秋风的房子！一个神采奕奕，顾盼生辉，光可照人，俊美非凡的男人拿着紫色的雷电眼望着在旁边的美丽的一个女人             他们就是紫雷和秋风了！","id":"h_zilei","exits":(["out":"/d/taohuacun/taohua7",]),"name":"紫秋","no_magic":1,])
+out "/d/taohuacun/taohua7"

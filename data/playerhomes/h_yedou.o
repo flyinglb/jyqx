@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["no_fight":1,"no_get":1,"short":"春风细雨楼","id":"h_yedou","exits":(["out":"/d/taohuacun/taohua7",]),"home_host":({"yedou","zly",}),"no_magic":1,"long":"一切都设置好了，只等一些室内装修。","file_name":"h_yedou","name":"春风细雨楼",])
+out "/d/taohuacun/taohua7"

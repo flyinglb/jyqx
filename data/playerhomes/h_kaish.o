@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_kaish","long":"这是李寻欢与血魔的家。屋内家具摆设得满满的，是一个温馨的小家庭。.","name":"标准新房","home_host":({"kaish","jkkke",}),"short":"标准新房","file_name":"h_kaish","bed_long":"","no_get":1,"no_fight":1,"exits":(["out":"/d/taohuacun/taohua7",]),"no_magic":1,])
+out "/d/taohuacun/taohua7"

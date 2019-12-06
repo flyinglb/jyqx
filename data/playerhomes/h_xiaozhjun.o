@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["exits":(["out":"/d/taohuacun/taohua7",]),"short":"潇雨轩","id":"h_xiaozhjun","long":"这儿是潇雨轩的内室。这里布置得很典雅，陈放着精美的花瓶和一些珍贵的瓷器，四壁挂满名家的字画.","no_magic":1,"no_get":1,"home_host":({"xiaozhjun","snqt",}),"name":"潇雨轩","file_name":"h_xiaozhjun","no_fight":1,])
+out "/d/taohuacun/taohua7"

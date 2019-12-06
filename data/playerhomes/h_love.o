@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_love","name":"映月阁","home_host":({"love","byy",}),"long":"一切都设置好了，只等一些室内装修。","exits":(["out":"/d/taohuacun/taohua7",]),"short":"映月阁","file_name":"h_love","no_magic":1,"no_fight":1,"no_get":1,])
+out "/d/taohuacun/taohua7"

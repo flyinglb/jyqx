@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["long":"暖暖心意在心头，龙剑对翠微的爱充满了这间房屋，cool。","file_name":"h_andyzhu","bed_long":"这是一个用水做的水床。","name":"龙剑和翠微的爱巢","id":"h_andyzhu","short":"龙剑和翠微的爱巢","no_magic":1,"home_host":({"andyzhu","maymay",}),"exits":(["out":"/d/taohuacun/taohua7",]),"no_fight":1,"no_get":1,])
+out "/d/taohuacun/taohua7"

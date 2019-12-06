@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_fangz","no_get":1,"no_magic":1,"name":"无为轩","exits":(["out":"/d/taohuacun/taohua7",]),"long":"","short":"无为轩","file_name":"h_fangz","home_host":({"fangz","flyfei",}),"no_fight":1,])
+out "/d/taohuacun/taohua7"

@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_lhz","name":"奶油天堂","long":"奶油与月亮的世界","home_host":({"lhz","lunagm",}),"exits":(["out":"/d/taohuacun/taohua7",]),"file_name":"h_lhz","short":"奶油天堂","no_magic":1,"no_fight":1,"no_get":1,])
+out "/d/taohuacun/taohua7"

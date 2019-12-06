@@ -1,0 +1,260 @@
+Can't find "mudos", ignoring old binaries.
+Try invoking the driver using the full pathname.
+Connected to address server on 10.10.23.3 port 7374
+
+Loading preloaded files ...
+Initializations complete.
+
+Accepting connections on port 1999.
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang
+调用来自：inherit/char/char.c 的 heart_beat() 第 103 行，物件： kungfu/class/shaolin/tuoboseng#45 ("托钵僧")
+调用来自：inherit/char/npc.c 的 chat() 第 105 行，物件： kungfu/class/shaolin/tuoboseng#45 ("托钵僧")
+调用来自：<function> 的 <function>() 第 0 行，物件： kungfu/class/shaolin/tuoboseng#45 ("托钵僧")
+调用来自：inherit/char/npc.c 的 random_move() 第 119 行，物件： kungfu/class/shaolin/tuoboseng#45 ("托钵僧")
+调用来自：feature/command.c 的 command_hook() 第 56 行，物件： kungfu/class/shaolin/tuoboseng#45 ("托钵僧")
+调用来自：cmds/std/go.c 的 main() 第 99 行，物件： cmds/std/go
+调用来自：d/city/dongmen.c 的 create() 第 33 行，物件： d/city/dongmen
+调用来自：inherit/room/room.c 的 setup() 第 215 行，物件： d/city/dongmen
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/dongmen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/dongmen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang ("武将")
+Heart beat in kungfu/class/shaolin/tuoboseng#45 turned off.
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#137
+调用来自：inherit/char/char.c 的 heart_beat() 第 103 行，物件： d/city2/npc/mao18#55 ("茅十八")
+调用来自：inherit/char/npc.c 的 chat() 第 105 行，物件： d/city2/npc/mao18#55 ("茅十八")
+调用来自：<function> 的 <function>() 第 0 行，物件： d/city2/npc/mao18#55 ("茅十八")
+调用来自：inherit/char/npc.c 的 random_move() 第 119 行，物件： d/city2/npc/mao18#55 ("茅十八")
+调用来自：feature/command.c 的 command_hook() 第 56 行，物件： d/city2/npc/mao18#55 ("茅十八")
+调用来自：cmds/std/go.c 的 main() 第 99 行，物件： cmds/std/go
+调用来自：d/city/nanmen.c 的 create() 第 33 行，物件： d/city/nanmen
+调用来自：inherit/room/room.c 的 setup() 第 215 行，物件： d/city/nanmen
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/nanmen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/nanmen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#137 ("武将")
+Heart beat in d/city2/npc/mao18#55 turned off.
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/shi.c 第 38 行
+物件: /d/city/npc/shi
+调用来自：inherit/char/char.c 的 heart_beat() 第 103 行，物件： kungfu/class/gaibang/kongkong#62 ("空空儿")
+调用来自：inherit/char/npc.c 的 chat() 第 105 行，物件： kungfu/class/gaibang/kongkong#62 ("空空儿")
+调用来自：<function> 的 <function>() 第 0 行，物件： kungfu/class/gaibang/kongkong#62 ("空空儿")
+调用来自：inherit/char/npc.c 的 random_move() 第 119 行，物件： kungfu/class/gaibang/kongkong#62 ("空空儿")
+调用来自：feature/command.c 的 command_hook() 第 56 行，物件： kungfu/class/gaibang/kongkong#62 ("空空儿")
+调用来自：cmds/std/go.c 的 main() 第 99 行，物件： cmds/std/go
+调用来自：d/city/bingyin.c 的 create() 第 30 行，物件： d/city/bingyin
+调用来自：inherit/room/room.c 的 setup() 第 215 行，物件： d/city/bingyin
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/bingyin
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/bingyin
+调用来自：d/city/npc/shi.c 的 create() 第 38 行，物件： d/city/npc/shi ("史青山")
+Heart beat in kungfu/class/gaibang/kongkong#62 turned off.
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/shi.c 第 38 行
+物件: /d/city/npc/shi#380
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/bingyin
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/bingyin
+调用来自：d/city/npc/shi.c 的 create() 第 38 行，物件： d/city/npc/shi#380 ("史青山")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#400
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/nanmen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/nanmen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#400 ("武将")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#410
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/dongmen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/dongmen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#410 ("武将")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#440
+调用来自：inherit/char/char.c 的 heart_beat() 第 103 行，物件： d/taishan/npc/tangzi#340 ("趟子手")
+调用来自：inherit/char/npc.c 的 chat() 第 105 行，物件： d/taishan/npc/tangzi#340 ("趟子手")
+调用来自：<function> 的 <function>() 第 0 行，物件： d/taishan/npc/tangzi#340 ("趟子手")
+调用来自：inherit/char/npc.c 的 random_move() 第 119 行，物件： d/taishan/npc/tangzi#340 ("趟子手")
+调用来自：feature/command.c 的 command_hook() 第 56 行，物件： d/taishan/npc/tangzi#340 ("趟子手")
+调用来自：cmds/std/go.c 的 main() 第 99 行，物件： cmds/std/go
+调用来自：d/suzhou/dongmen.c 的 create() 第 29 行，物件： d/suzhou/dongmen
+调用来自：inherit/room/room.c 的 setup() 第 215 行，物件： d/suzhou/dongmen
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/suzhou/dongmen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/suzhou/dongmen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#440 ("武将")
+Heart beat in d/taishan/npc/tangzi#340 turned off.
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#478
+调用来自：inherit/char/char.c 的 heart_beat() 第 103 行，物件： kungfu/class/btshan/ouyangke#83 ("欧阳克")
+调用来自：inherit/char/npc.c 的 chat() 第 105 行，物件： kungfu/class/btshan/ouyangke#83 ("欧阳克")
+调用来自：<function> 的 <function>() 第 0 行，物件： kungfu/class/btshan/ouyangke#83 ("欧阳克")
+调用来自：inherit/char/npc.c 的 random_move() 第 119 行，物件： kungfu/class/btshan/ouyangke#83 ("欧阳克")
+调用来自：feature/command.c 的 command_hook() 第 56 行，物件： kungfu/class/btshan/ouyangke#83 ("欧阳克")
+调用来自：cmds/std/go.c 的 main() 第 99 行，物件： cmds/std/go
+调用来自：d/city/beimen.c 的 create() 第 34 行，物件： d/city/beimen
+调用来自：inherit/room/room.c 的 setup() 第 215 行，物件： d/city/beimen
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/beimen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/beimen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#478 ("武将")
+Heart beat in kungfu/class/btshan/ouyangke#83 turned off.
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#511
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/suzhou/dongmen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/suzhou/dongmen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#511 ("武将")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/shi.c 第 38 行
+物件: /d/city/npc/shi#535
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/bingyin
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/bingyin
+调用来自：d/city/npc/shi.c 的 create() 第 38 行，物件： d/city/npc/shi#535 ("史青山")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#555
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/nanmen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/nanmen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#555 ("武将")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#565
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/dongmen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/dongmen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#565 ("武将")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/xiangyang/npc/pi.c 第 35 行
+物件: /d/xiangyang/npc/pi
+调用来自：inherit/char/char.c 的 heart_beat() 第 103 行，物件： d/city/npc/hunhun#73 ("小混混")
+调用来自：inherit/char/npc.c 的 chat() 第 105 行，物件： d/city/npc/hunhun#73 ("小混混")
+调用来自：<function> 的 <function>() 第 0 行，物件： d/city/npc/hunhun#73 ("小混混")
+调用来自：inherit/char/npc.c 的 random_move() 第 119 行，物件： d/city/npc/hunhun#73 ("小混混")
+调用来自：feature/command.c 的 command_hook() 第 56 行，物件： d/city/npc/hunhun#73 ("小混混")
+调用来自：cmds/std/go.c 的 main() 第 99 行，物件： cmds/std/go
+调用来自：d/xiangyang/southgate2.c 的 create() 第 30 行，物件： d/xiangyang/southgate2
+调用来自：inherit/room/room.c 的 setup() 第 215 行，物件： d/xiangyang/southgate2
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/xiangyang/southgate2
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/xiangyang/southgate2
+调用来自：d/xiangyang/npc/pi.c 的 create() 第 35 行，物件： d/xiangyang/npc/pi ("裨将")
+Heart beat in d/city/npc/hunhun#73 turned off.
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#651
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/beimen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/beimen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#651 ("武将")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#661
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/suzhou/dongmen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/suzhou/dongmen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#661 ("武将")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/shi.c 第 38 行
+物件: /d/city/npc/shi#685
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/bingyin
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/bingyin
+调用来自：d/city/npc/shi.c 的 create() 第 38 行，物件： d/city/npc/shi#685 ("史青山")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#705
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/nanmen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/nanmen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#705 ("武将")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#715
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/dongmen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/dongmen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#715 ("武将")
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/city/npc/wujiang.c 第 32 行
+物件: /d/city/npc/wujiang#831
+调用来自：inherit/char/char.c 的 heart_beat() 第 103 行，物件： d/npc/zhaoda#7 ("赵大")
+调用来自：inherit/char/npc.c 的 chat() 第 105 行，物件： d/npc/zhaoda#7 ("赵大")
+调用来自：<function> 的 <function>() 第 0 行，物件： d/npc/zhaoda#7 ("赵大")
+调用来自：inherit/char/npc.c 的 random_move() 第 119 行，物件： d/npc/zhaoda#7 ("赵大")
+调用来自：feature/command.c 的 command_hook() 第 56 行，物件： d/npc/zhaoda#7 ("赵大")
+调用来自：cmds/std/go.c 的 main() 第 99 行，物件： cmds/std/go
+调用来自：d/city/ximen.c 的 create() 第 34 行，物件： d/city/ximen
+调用来自：inherit/room/room.c 的 setup() 第 215 行，物件： d/city/ximen
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/city/ximen
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/city/ximen
+调用来自：d/city/npc/wujiang.c 的 create() 第 32 行，物件： d/city/npc/wujiang#831 ("武将")
+Heart beat in d/npc/zhaoda#7 turned off.
+
+运行时错误：*Bad argument 1 to call_other()
+Expected: string or array or object Got: 0.
+
+程序：d/xiangyang/npc/pi.c 第 35 行
+物件: /d/xiangyang/npc/pi#962
+调用来自：inherit/char/char.c 的 heart_beat() 第 103 行，物件： d/mingjiao/yuan/zhaomin#854 ("赵敏")
+调用来自：inherit/char/npc.c 的 chat() 第 105 行，物件： d/mingjiao/yuan/zhaomin#854 ("赵敏")
+调用来自：<function> 的 <function>() 第 0 行，物件： d/mingjiao/yuan/zhaomin#854 ("赵敏")
+调用来自：inherit/char/npc.c 的 random_move() 第 119 行，物件： d/mingjiao/yuan/zhaomin#854 ("赵敏")
+调用来自：feature/command.c 的 command_hook() 第 56 行，物件： d/mingjiao/yuan/zhaomin#854 ("赵敏")
+调用来自：cmds/std/go.c 的 main() 第 99 行，物件： cmds/std/go
+调用来自：d/xiangyang/northgate2.c 的 create() 第 30 行，物件： d/xiangyang/northgate2
+调用来自：inherit/room/room.c 的 setup() 第 215 行，物件： d/xiangyang/northgate2
+调用来自：inherit/room/room.c 的 reset() 第 66 行，物件： d/xiangyang/northgate2
+调用来自：inherit/room/room.c 的 make_inventory() 第 21 行，物件： d/xiangyang/northgate2
+调用来自：d/xiangyang/npc/pi.c 的 create() 第 35 行，物件： d/xiangyang/npc/pi#962 ("裨将")
+Heart beat in d/mingjiao/yuan/zhaomin#854 turned off.

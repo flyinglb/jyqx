@@ -1,0 +1,10 @@
+# written by hero 
+#!/bin/bsh
+while true
+do
+        result=`ps -xo comm|grep mudos|wc -l`
+	if [ $result -lt 1 ]
+        then  ./mudos config.mx &
+        fi
+        sleep 60
+done

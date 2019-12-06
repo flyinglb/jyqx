@@ -1,0 +1,30 @@
+// 为简化命令管理，将一些功能相同的命令在 ALIAS_D 定义
+// /cmds/usr /cmds/std /cmds/skill
+// 保存在 /cmds/debug/repeated
+
+	"l"     : "look",
+	"i"     : "inventory",
+        "sc"    : "score",
+        "quit"  : "exit",
+        "xia"   : "unride",
+        "qi"    : "ride",
+        "dating": "check",
+        "qiecuo": "fight",
+        "yun"   : "exert",
+        "yong"  : "perform",
+        "xue"   : "learn",
+        "lian"  : "practice",
+        "cha"   : "skills",
+        "fangqi": "abandon",
+        "bai"   : "apprentice",
+        "bei"   : "prepare",
+	"tt"    : "team talk",
+        "jifa"  : "enable",
+        "jiali" : "enforce",
+        "kaichu": "expell",
+        "jiao"  : "teach",
+        "shou"  : "recruit",
+        "yanjiu": "research",
+        "quanjia": "persuade",
+        "exercise"      : "dazuo",//这些中国特有的武功命令还是用拼音好
+        "respirate"     : "tuna",

@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_weile","long":"一切都设置好了，只等一些室内装修。","home_host":({"weile","asdfghjkl",}),"no_get":1,"name":"爱","file_name":"h_weile","no_magic":1,"exits":(["out":"/d/taohuacun/taohua7",]),"short":"爱","no_fight":1,])
+out "/d/taohuacun/taohua7"

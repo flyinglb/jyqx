@@ -1,0 +1,13 @@
+edit /cmds/usr/wizlist.c Fri Mar  8 16:02:09 2002
+rm /u/wjz/workroom.c Fri Mar  8 16:10:12 2002
+rm /u/fireman/workroom.c Fri Mar  8 16:10:24 2002
+rm /u/chairdesk/workroom.c Fri Mar  8 16:10:36 2002
+edit /cmds/adm/setpass.c Fri Mar  8 16:10:52 2002
+rmdir /u/wjz Fri Mar  8 16:12:44 2002
+rmdir /u/fireman Fri Mar  8 16:12:54 2002
+rm /u/chairdesk/budai.c Fri Mar  8 16:13:22 2002
+rm /u/chairdesk/huanhun_dan.c Fri Mar  8 16:13:30 2002
+rmdir /u/chairdesk Fri Mar  8 16:13:40 2002
+edit /edit /cmds/std/location.c Fri Mar  8 16:14:42 2002
+edit /cmds/std/location.c Fri Mar  8 16:14:50 2002
+edit /cmds/usr/finger.c Fri Mar  8 16:17:56 2002

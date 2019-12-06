@@ -1,0 +1,6 @@
+#!/bin/bsh
+
+while true
+do
+	./dri config
+done

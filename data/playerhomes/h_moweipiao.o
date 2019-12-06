@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["home_host":({"moweipiao","zjun",}),"id":"h_moweipiao","file_name":"h_moweipiao","name":"飘毛居","long":"一切都设置好了，只等一些室内装修。","short":"飘毛居","exits":(["out":"/d/taohuacun/taohua7",]),"no_fight":1,"no_magic":1,"no_get":1,])
+out "/d/taohuacun/taohua7"

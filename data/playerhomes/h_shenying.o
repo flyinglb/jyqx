@@ -1,0 +1,3 @@
+#/d/taohuacun/obj/home.c
+dbase (["id":"h_shenying","name":"领悟居","no_fight":1,"long":"一切都设置好了，只等一些室内装修。","short":"领悟居","bed_long":"e","exits":(["out":"/d/taohuacun/taohua7",]),"no_get":1,"home_host":({"shenying","shalala",}),"no_magic":1,"file_name":"h_shenying",])
+out "/d/taohuacun/taohua7"
